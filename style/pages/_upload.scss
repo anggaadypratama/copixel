@@ -1,0 +1,105 @@
+.title{
+    display: flex;
+
+}
+
+.upload{
+    font-family: $pop;
+    display: flex;
+    justify-content: center;
+
+    &__wrapper{
+        max-width: 700px;
+        width: 100%;
+
+        .form-upload{
+            display: flex;
+            justify-content: center;
+            &__wrapper{
+                width: 700px;
+
+                .message{
+                    text-align: center;
+                    margin-top: 20px;
+
+                    > h3{
+                        font-weight: 600;
+                        margin-bottom: 20px;
+                    }
+
+                    > p{
+                        color: $ntxt;
+                    }
+                }
+
+                .input-form-upload{
+                    width: 100%;
+                    height: 100px;
+                    outline: none;
+                    border: none;
+                    display: none;
+
+                    &.active{
+                        display: block;
+                    }
+
+                    &.title{
+                        font-size: 24px;
+                        font-weight: 600;
+                    }
+                }
+        
+                .drag-area{
+                    display: flex;
+                    justify-content: center;
+            
+                    .input-area{
+                        width: 100%;
+                        height: 440px;
+                        border-radius: 10px;
+                        // background-color: #f1f1f1;
+                        cursor: pointer;
+                        border: 2px dashed $bg;
+                        transition: all .2s ease-in-out;
+
+                        &.active{
+                            background-color: rgba($color: $secondary, $alpha: .2);
+                        }
+    
+                        &.image-exists{
+                            border: none;
+                        }
+    
+                        &__wrapper{
+                            display: grid;
+                            place-items: center;
+                            height: 100%;
+    
+                            p > span{
+                                color: $secondary;
+                            }
+                        }
+    
+                        &__message{
+                            text-align: center;
+    
+                            #helper-message{
+                                margin-top: -10px;
+                                color: $ntxt;
+                            }
+    
+                        }
+                    }
+            
+                    img{
+                        border-radius: 10px;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
+
+
+
+}

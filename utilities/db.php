@@ -36,7 +36,6 @@
                 }else{
                     echo "<br> Data berhasil ditambahkan";
                 }
-        
         }
 
         public function update($table,$para=array(),$id){
@@ -59,7 +58,7 @@
             $sql .=" WHERE $id ";
             $sql;
             $result = $this->mysqli->query($sql);
-            
+
             if(!$result){
                 echo("Error description: " . $this -> mysqli -> error);
             }else{

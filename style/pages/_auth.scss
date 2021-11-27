@@ -1,7 +1,3 @@
-@import '../util/colors';
-
-
-
 .right-section{
     width: 100%;
     height: 100vh;
@@ -15,6 +11,7 @@
         display: flex;
         justify-content: center;
         flex-direction: column;
+
         .welcome-desc{
             font-size: 1.2rem;
             font-weight: bold;
@@ -28,16 +25,6 @@
             font-weight: bold;
         }
 
-        .btn{
-            font-weight: bold;
-            font-size: 1.1rem; 
-            opacity: .8;
-            transition: opacity ease-in-out .2s;
-
-            &:hover{
-                opacity: 1;
-            }
-        }
     }
 }
 
@@ -56,22 +43,21 @@
             color: $primary;
             text-transform: capitalize;
         }
-        
+
         .form-control{
             background-color: $bg;
         }
 
-        .btn-secondary{
-            background-color: $secondary;
-            border: none;
+        .redirect-auth{
 
-            &:hover, &:focus{
-                background-color: rgba($color: $secondary, $alpha: .8);
+            &.btn{
+                display: flex !important;
+                align-items: center !important;
+
+                @media only screen and (min-width: 991px){
+                    display: none !important;
+                }
             }
-        }
-
-        .btn{
-            font-weight: bold;
 
         }
     }
@@ -79,8 +65,5 @@
 
 }
 
-.redirect-auth{
-    display: flex !important;
-    align-items: center !important;
-}
+
 
