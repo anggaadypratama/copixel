@@ -41,7 +41,7 @@
                                                 <p>Dashboard Ui</p>
                                             </div>
                                         </div>
-                                        <img class="image-card" loading=”lazy” src="https://images6.alphacoders.com/115/1154953.jpg" alt="">
+                                        <img class="image-card" loading=”lazy” src="image/shibuya kanon.jpg" alt="">
                                     </a>
                                     <div class="post-info mt-3">
                                         <a href="/copixel?p=profile" class="account">

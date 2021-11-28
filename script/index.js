@@ -41,31 +41,46 @@ const Upload = () => {
         let validExtensions = ["image/jpeg", "image/jpg", "image/png"]
 
         if(validExtensions.includes(fileType)){
-            let fileReader = new FileReader()
+            if(file.size/(1024**2) < 5){
+                let fileReader = new FileReader()
 
-            fileReader.readAsDataURL(file);
-
-            fileReader.onload = () => {
-                let fileURL = fileReader.result
-
-                message.style.display = 'none';
-                inputTitle[0].classList.add('active')
-                inputTitle[1].classList.add('active')
-
-                
-
-                let imgTag = `<img src="${fileURL}" alt="image" width="700px" height="440px">`;
-                dropArea.innerHTML = imgTag;
-                dropArea.classList.add('image-exists')
+                fileReader.readAsDataURL(file);
+    
+                fileReader.onload = () => {
+                    let fileURL = fileReader.result
+    
+                    message.style.display = 'none';
+                    inputTitle[0].classList.add('active')
+                    inputTitle[1].classList.add('active')
+    
+    
+                    let imgTag = `<img src="${fileURL}" class="input-image" alt="image">`;
+                    dropArea.innerHTML = imgTag;
+                    dropArea.classList.add('image-exists')
+                }
+            }else{
+                alert("Ukuran Gambar Terlalu besar!");
+                dropArea.classList.remove("active");
             }
-
-
         }else{
-            alert("This is not an Image File!");
+            alert("Ini bukan format gambar!");
             dropArea.classList.remove("active");
-            dragText.textContent = "Drag & Drop to Upload File";
         }
     }
 }
 
+const Navbar = () => {
+    const imgProfile = document.getElementById('dropdownProfile')
+    const overlay = document.getElementById('overlay')
+
+    imgProfile.onclick = () => {
+        overlay.classList.toggle('active')
+    }
+
+    document.body.addEventListener('click',() =>{
+        overlay.classList.remove('active')
+    },true)
+}
+
+Navbar()
 Upload()

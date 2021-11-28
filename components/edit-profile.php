@@ -1,4 +1,4 @@
-<form action="" x-data="{edit: true}">
+<form action="" x-data="{edit: true}" class="edit-profile-form">
     <div class="image-profile">
         <img src="https://www.anime-planet.com/images/characters/205377.jpg?t=1631194908" alt="">
     </div>

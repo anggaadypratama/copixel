@@ -4,7 +4,7 @@
         private $servername='localhost';
         private $username='root';
         private $password='root';
-        private $dbname='pendaftaran_siswa';
+        private $dbname='db_copixel';
         private $result=array();
         private $mysqli='';
 
@@ -17,8 +17,6 @@
                 echo '<br>';
                 echo 'Error: '.$this -> mysqli -> connect_error;
                 exit();
-            }else{
-                echo "terkoneksi ke db";
             }
         }
 
@@ -34,7 +32,7 @@
                 if(!$result){
                     echo("Error description: " . $this -> mysqli -> error);
                 }else{
-                    echo "<br> Data berhasil ditambahkan";
+                    return $result;
                 }
         }
 
@@ -79,10 +77,8 @@
 
             if(!$result){
                 echo("Error description: " . $this -> mysqli -> error);
-            }else{
-                echo "<br> Data ditampilkan";
             }
-
+            
             $this->sql = $result;
         }
 
