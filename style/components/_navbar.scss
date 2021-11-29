@@ -1,0 +1,103 @@
+
+
+.navbar_section{
+    width: 100%;
+    height: 90px;
+    border-bottom: 1px solid $bg;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    background-color: white;
+    z-index: 9;
+    padding: 0px 30px;
+
+    @media only screen and (max-width: 767px) {
+        justify-content: center;
+    }
+}
+
+.search-icon{
+    display: flex;
+
+
+
+    .logo{
+        font-family: $rs;
+        font-size: 32px;
+        
+        a{
+            text-decoration: none;
+            color: $primary;
+        }
+    }
+
+    .search-wrapper{
+        margin-left: 50px;
+        display: flex;
+        background-color: $bg;
+        padding: 3px 20px;
+        max-width: 400px;
+        width: 100%;
+        border-radius: 8px;
+        transition: all ease-in-out .2s;
+        margin-right: 20px;
+
+        &:hover{
+            outline: 2px solid $primary;
+            background-color: white;
+
+        }
+
+        @media only screen and (max-width: 767px) {
+            display: none;
+        }
+
+        button{
+            outline: none;
+            border: none;
+            background-color: transparent;
+            padding: 10px 5px 10px 20px;
+
+            .fa-search{
+                transition: color ease-in-out .2s;
+                color: #9E9EA7;
+
+                &:hover{
+                    color: $primary;
+                }
+            }
+        }
+
+        input{
+            width: inherit;
+            background-color: transparent;
+            border: none;
+
+            &:focus-within{
+                outline: none;
+            }
+        }
+    }
+}
+
+.upload-auth{
+    display: flex;
+    align-items: center;
+
+    @media only screen and (max-width: 800px) {
+        display: none;
+    }
+
+    .image-profile{
+        object-fit: cover;
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+
+    .btn-upload{
+        margin-right: 20px;
+        
+    }
+}

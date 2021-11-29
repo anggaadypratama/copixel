@@ -1,0 +1,66 @@
+.edit-profile-form{
+    display: flex;
+
+    @media only screen and (max-width: 767px){
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+
+
+    .image-profile{
+        img{
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    }
+
+    .user-form{
+        display: flex;
+        flex-direction: column;
+        margin-left: 25px;
+
+        @media only screen and (max-width: 767px){
+            margin-top: 20px;
+            text-align: center;
+            margin-left: 0;
+        }
+
+        &__name{
+            width: 100%;
+            height: 70px;
+            font-size: 42px;
+            border: none;
+            outline: none;
+            font-family: $pop;
+            font-weight: 600;
+
+            @media only screen and (max-width: 767px){
+                text-align: center;
+            }
+
+
+            &:disabled{
+                background-color: transparent;
+            }
+        }
+
+        &__desc{
+            width: 100%;
+            border: none;
+            outline: none;
+            color: $ntxt;
+
+            @media only screen and (max-width: 767px){
+                text-align: center;
+            }
+
+            &:disabled{
+                background-color: transparent;
+            }
+        }
+    }
+}
