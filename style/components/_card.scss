@@ -1,13 +1,21 @@
 .card{
     border: none;
 
+    
+
     .image-wrapper{
         position: relative;
        
         .image-card{
             width: 100%;
             height: auto;
+            max-height: 240px;
+            object-fit: cover;
             border-radius: 8px;
+
+            @media only screen and (max-width: 767px){
+                max-height: 500px;
+            }
         }
     
         .image-overlay{
@@ -15,10 +23,11 @@
             width: 100%;
             height: 100%;
             border-radius: 8px;
-            display: flex;
-            align-items: flex-end;
+            flex-direction: column;
+            justify-content: flex-end;
             transition: all ease .3s;
             background: rgba(0,0,0,0);
+            display: flex;
 
             p{
                 color: white;
@@ -26,11 +35,17 @@
                 font-family: $pop;
                 opacity: 0;
                 transition: opacity ease .3s;
+
+
             }
 
             &:hover{
                 background: linear-gradient(0deg, rgba(0,0,0,1) 0%,  rgba(0,212,255,0) 50%);
                 
+                .btn .btn-secondary{
+                    opacity: 1;
+                }
+
                 p{
                     opacity: 1;
                 }
@@ -42,14 +57,14 @@
     .post-info{
         display: flex;
         justify-content: space-between;
+        align-items: center;
         .account{
             display: flex;
-
 
                 text-decoration: none;
 
                 p{
-
+                    margin-top: 2px;
                     margin-left: 8px;
                     font-weight: bold;
     
@@ -79,4 +94,59 @@
 
 
     }
+}
+
+.image-option{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 100px;
+    position: absolute;
+    z-index: 2;
+
+
+
+    .btn .btn-secondary{
+        position: relative;
+        opacity: 1;
+    }
+
+    .fas{
+        font-size: 14px;
+
+        @media only screen and (max-width: 767px){
+            font-size: 16px;
+        }
+
+    }
+
+    .danger{
+
+        &:hover{
+            background-color: #DC3444;
+            color: white;
+        }
+    }
+
+    .btn-detail{
+        width: 40px;
+        height: 40px;
+        background-color: white;
+        color: $primary;
+        border-bottom-left-radius: 12px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 8px;
+        display: grid;
+        place-items: center;
+
+        @media only screen and (max-width: 767px){
+            width: 50px;
+            height: 50px;
+        }
+
+        &:hover{
+            background-color: $bg;
+        }
+    }
+
 }

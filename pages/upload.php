@@ -1,6 +1,17 @@
+<?php
+    include '/utilities/cookiesData.php';
+
+    $cookiesData = getCookiesData();
+    $auth = (boolean)$cookiesData[0];
+
+    if(!isset($_COOKIE['token']) || !auth) {
+        header('location: /copixel');
+    }
+?>
+
 <div class="upload">
     <div class="container upload__wrapper">
-        <form method="get" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data" action="process/upload.php">
             <div class="action-button d-flex justify-content-between  mt-4 mb-4">
                 <a class="btn btn-outline-secondary px-4 py-2" href="/copixel">Batal</a>
                 <button type="button" class="btn btn-primary px-4 py-2" id="button-next-upload" data-bs-toggle="modal"
@@ -11,7 +22,7 @@
             <div class="form-upload">
                 <div class="form-upload__wrapper">
                     <div class="message">
-                        <h3>Apa yang sedang kamu kerjakan?</h3>
+                        <h3>Apa yang akan kamu bagikan?</h3>
                         <p>Gambar yang kamu unggah juga digunakan sebagai thumbnail pada feed kamu</p>
                     </div>
                     <div class="title">
@@ -37,9 +48,9 @@
             </div>
 
 
-            <div class="modal fade" id="inputTags" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            <div class="modal fade" id="inputTags" data-bs-backdrop="static" data-bs-tokenboard="false" tabindex="-1"
                 aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="staticBackdropLabel">Kamu Yakin</h5>
@@ -50,7 +61,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-light" data-bs-dismiss="modal">Batal</button>
-                            <button type="submit" class="btn btn-primary">Unggah</button>
+                            <input type="submit" value="Unggah" name="submit" class="btn btn-primary">
                         </div>
                     </div>
                 </div>
@@ -58,3 +69,5 @@
         </form>
     </div>
 </div>
+
+<script type="module" src="../script/upload.js"></script>

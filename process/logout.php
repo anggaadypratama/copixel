@@ -1,4 +1,4 @@
 <?php
 
-setcookie('key','',time() - 3600,'/');
+setcookie('token','',time() - 3600,'/');
 header('location: /copixel');

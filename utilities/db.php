@@ -48,13 +48,10 @@
             $sql .=" WHERE $id";
 
             $result = $this->mysqli->query($sql);
-            isError($result, $this->mysqli);
         }
 
         public function delete($table,$id){
-            $sql="DELETE FROM $table";
-            $sql .=" WHERE $id ";
-            $sql;
+            $sql="DELETE FROM $table WHERE $id";
             $result = $this->mysqli->query($sql);
 
             if(!$result){
@@ -66,9 +63,9 @@
 
         public $sql;
 
-        public function select($table,$rows="*",$where = null){
-            if ($where != null) {
-                $sql="SELECT $rows FROM $table WHERE $where";
+        public function select($table,$rows="*", $optional = null){
+            if($optional != null){
+                $sql="SELECT $rows FROM $table $optional";
             }else{
                 $sql="SELECT $rows FROM $table";
             }
@@ -78,7 +75,7 @@
             if(!$result){
                 echo("Error description: " . $this -> mysqli -> error);
             }
-            
+
             $this->sql = $result;
         }
 

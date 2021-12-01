@@ -4,7 +4,7 @@
     $cookiesData = getCookiesData();
     $auth = (boolean)$cookiesData[0];
 
-    if(isset($_COOKIE['key']) && auth) {
+    if(isset($_COOKIE['token']) && auth) {
         header('location: /copixel');
     }
 
@@ -37,6 +37,7 @@
                             <?php 
                             if($pages == "register"){
                                 ?>
+                            <input type="hidden" name="img-url" id="img-url">
                             <div class="col-12">
                                 <div class="mb-3">
                                     <label for="exampleInputName1" class="form-label">Name</label>

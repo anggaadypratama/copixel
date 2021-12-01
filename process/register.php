@@ -5,11 +5,17 @@
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         if(isset($_POST['submit'])){
+            $target_dir = "image/profile/";
+
             $name = $_POST['name'];
             $email = $_POST['email'];
             $password = $_POST['password'];
+            $imgUrl = $_POST['img-url'];
 
-            $db->select('Users','*',"email='$email'");
+            $fp = fopen("../$target_dir"."$name.svg","w+");
+            fwrite($fp, base64_decode($imgUrl));
+
+            $db->select('Users','*',"WHERE email='$email'");
             $res = $db->sql;
             $resVal = $res->fetch_assoc();
 
@@ -18,7 +24,8 @@
                     'id_users' => rand(100, 100000000),
                     'name' => $name,
                     'email' => $email,
-                    'password' => password_hash($password, PASSWORD_DEFAULT)
+                    'password' => password_hash($password, PASSWORD_DEFAULT),
+                    'img_profile' => "$target_dir$name.svg"
                 ]);
 
                 if($res === true){

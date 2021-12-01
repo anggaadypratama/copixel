@@ -11,9 +11,18 @@
 @import './pages/upload';
 @import './pages/detailPost';
 
+body{
+    font-family: $pop;
+}
+
 .btn{
     border-radius: 8px;
     font-weight: 600;
+
+    &:focus, &:active{
+        outline: none !important;
+        box-shadow: none;
+    }
 }
 
 .btn-secondary{
@@ -56,6 +65,16 @@
     border: none;
 }
 
+.btn-outline-secondary{
+    border: 1px solid $primary;
+    color: $primary;
+
+    &:hover{
+        background-color: $primary;
+        border: 1px solid $primary;
+    }
+}
+
 .modal{
     &-content{
         border: none;
@@ -71,8 +90,11 @@
     }
 }
 
+
 .dropdown-menu{
-    border: 1px solid $bg;
+    border: none;
+    box-shadow:  0 .5rem 1rem rgba($ntxt, .15);
+
 }
 
 #overlay{

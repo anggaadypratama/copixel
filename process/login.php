@@ -10,16 +10,16 @@
             $email = $_POST['email'];
             $password = $_POST['password'];
 
-            $db->select('Users','*',"email='$email'");
+            $db->select('Users','*',"WHERE email='$email'");
             $res = $db->sql;
             $resVal = $res->fetch_assoc();
 
             if($res->num_rows === 1){
 
                 if(password_verify($password, $resVal['password'])){
-                    $key = "true,{$resVal['id_users']},{$resVal['name']},{$resVal['img_profile']}";
-                    $encrypt = encrypt_decrypt('encrypt',$key);
-                    setcookie("key", $encrypt, time() + (86400 * 30), "/");
+                    $token = "true,{$resVal['id_users']}";
+                    $encrypt = encrypt_decrypt('encrypt',$token);
+                    setcookie("token", $encrypt, time() + (86400 * 30), "/");
 
                     header('location:../');
                 }else{
