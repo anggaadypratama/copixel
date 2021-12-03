@@ -1,39 +1,59 @@
 <?php
     include 'utilities/cookiesData.php';
 
+    $cookiesData = getCookiesData();
+    $auth = (boolean)$cookiesData[0];
+
+    $db->select('Users','img_profile',"WHERE id_users='{$cookiesData[1]}'");
+    $res = $db->sql;
+    $resVal = $res->fetch_assoc();
 ?>
 
 
-<div class="navbar_section">
+<div class="navbar_section border-bottom">
     <div class="search-icon">
         <div class="logo">
-            <a href="/copixel">
-                COPIXEL
+            <a href="process/search.php">
+                Copixel
             </a>
         </div>
-        <form>
+        <?php if($auth && cookiesData[1]){ ?>
+        <form action="?search=udin">
             <div class="search-wrapper">
-                <input type="text" placeholder="Cari gambar...">
+                <input type="search" name="search" placeholder="Cari gambar...">
                 <button type="submit">
                     <div class="fa fa-search"></div>
                 </button>
             </div>
         </form>
+        <?php } ?>
+
     </div>
 
     <div class="upload-auth">
-        <a href="?p=upload" class="btn btn-primary px-3 py-2 btn-upload">Upload</a>
-        <div class="dropdown">
-            <img class="image-profile" src="https://www.anime-planet.com/images/characters/205377.jpg?t=1631194908"
-                height="50" width="50" alt="profile" id="dropdownProfile" data-bs-toggle="dropdown"
-                aria-expanded="false">
+        <?php if($auth){
+            echo <<<STR
+                <a href="?p=upload" class="btn btn-primary px-3 py-2 btn-upload">Unggah</a>
+                <div class="dropdown">
+                    <img class="image-profile" loading="lazy" src="{$resVal['img_profile']}"
+                        height="50" width="50" alt="profile" id="dropdownProfile" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+        
+                    <ul class="dropdown-menu mt-3" aria-labelledby="dropdownProfile">
+                        <li><a class="dropdown-item" href="?p=profile&uid={$cookiesData[1]}">Profil</a></li>
+                        <li><a class="dropdown-item" href="process/logout.php">Keluar</a></li>
+                    </ul>
+                </div>
+            STR;
+        }else{
+            echo <<<STR
+                <a href="?p=auth&s=login" class="btn btn-upload px-3 py-2">Login</a>
+                <a href="?p=auth&s=register" class="btn btn-primary px-3 py-2">Register</a>
+            STR;
+        }
 
-            <ul class="dropdown-menu mt-3" aria-labelledby="dropdownProfile">
-                <li><a class="dropdown-item" href="#">Profil</a></li>
-                <li><a class="dropdown-item" href="#">Ubah Password</a></li>
-                <li><a class="dropdown-item" href="process/logout.php">Keluar</a></li>
-            </ul>
-        </div>
+        ?>
+
     </div>
 
 </div>

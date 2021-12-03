@@ -4,6 +4,8 @@
 @import './components/navbar';
 @import './components/card';
 @import './components/editProfile';
+@import './components/listComment';
+@import './components/footer';
 
 @import './pages/auth';
 @import './pages/home';
@@ -11,9 +13,29 @@
 @import './pages/upload';
 @import './pages/detailPost';
 
+body{
+    font-family: $pop;
+}
+
+p{
+    word-break: break-all;
+    white-space: normal;
+}
+
+h1,h2,h3,h4,h5{
+    word-break: break-all;
+    white-space: normal;
+}
+
+
 .btn{
-    border-radius: 8px;
+    border-radius: 0.5rem;
     font-weight: 600;
+
+    &:focus, &:active{
+        outline: none !important;
+        box-shadow: none;
+    }
 }
 
 .btn-secondary{
@@ -32,21 +54,21 @@
 }
 
 .btn-primary{
-    background-color: $secondary;
+    background-color: $secondary !important;
     border: none;
     font-family: $pop;
     transition: all .2s ease-in-out;
     
     &:hover{
-        background-color: rgba($color: $secondary, $alpha: .8);
+        background-color: rgba($color: $secondary, $alpha: .8) !important;
     }
     
     &:focus{
-        background-color: $darkSecondary;
+        background-color: $darkSecondary !important;
     }
     
     &:disabled{
-        background-color: rgba($color: $secondary, $alpha: .5);
+        background-color: rgba($color: $secondary, $alpha: .5) !important;
     }
 }
 
@@ -54,6 +76,16 @@
     background-color: white;
     outline: none;
     border: none;
+}
+
+.btn-outline-secondary{
+    border: 1px solid $primary;
+    color: $primary;
+
+    &:hover{
+        background-color: $primary;
+        border: 1px solid $primary;
+    }
 }
 
 .modal{
@@ -71,8 +103,11 @@
     }
 }
 
+
 .dropdown-menu{
-    border: 1px solid $bg;
+    border: none;
+    box-shadow:  0 .5rem 1rem rgba($ntxt, .15);
+
 }
 
 #overlay{
@@ -98,4 +133,48 @@
     width: 100%;
     max-height: 440px;
     height: auto;
+}
+
+.image-wrapper-ue{
+    position: relative;
+
+
+    &__img{
+        max-width: 700px;
+        width: 100%;
+        max-height: 440px;
+        height: auto;
+    }
+
+    &__overlay{
+        position: absolute;
+        display: grid;
+        font-weight: 600;
+        font-size: 24px;
+        place-items: center;
+        text-transform: capitalize;
+        color: white;
+        border-radius: .5rem;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        background-color: rgba($color: #000000, $alpha: .6);
+        transition: opacity .2s ease-in-out;
+
+        .information-wrapper{
+            text-align: center;
+            i{
+                margin-bottom: .8rem;
+                font-size: 52px;
+            }
+        }
+        
+        &:hover{
+            opacity: 1;
+        }
+    }
 }

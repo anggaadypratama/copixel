@@ -1,0 +1,17 @@
+footer{
+    width: 100%;
+    padding: 25px;
+    background-color: $bg;
+
+    .logo{
+        font-family: $rs;
+        font-weight: 600;
+        color: $primary;
+        font-size: 3rem;
+    }
+
+
+    .team{
+        font-weight: 600;
+    }
+}
