@@ -8,12 +8,5 @@ let svg = createAvatar(style,{
     translateY: 5
 });
 
-const svg64 = `${btoa(svg)}`
+document.getElementById('img-url').value = `${btoa(svg)}`
 
-document.getElementById('img-url').value = svg64
-
-
-
-
-
-// console.log(file)

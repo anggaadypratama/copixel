@@ -6,18 +6,15 @@
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
         if(isset($_POST['submit'])){
-
-
             $name = $_POST['name'];
             $about = $_POST['about'];
-
 
             if(strlen($_FILES['img-profile']['name']) === 0){
                 $db->select('Users','img_profile',"WHERE id_users='$cookiesData[1]'");
                 $res = $db->sql;
                 $resVal = $res->fetch_assoc();
                 $imgLink = $resVal['img_profile'];
-                
+
                 $res = $db->update('Users',[
                     'name' => $name,
                     'about' => $about,

@@ -17,6 +17,7 @@
                 COPIXEL
             </a>
         </div>
+        <?php if($auth && cookiesData[1]){ ?>
         <form action="?search=udin">
             <div class="search-wrapper">
                 <input type="search" name="search" placeholder="Cari gambar...">
@@ -25,6 +26,8 @@
                 </button>
             </div>
         </form>
+        <?php } ?>
+
     </div>
 
     <div class="upload-auth">
@@ -32,7 +35,7 @@
             echo <<<STR
                 <a href="?p=upload" class="btn btn-primary px-3 py-2 btn-upload">Unggah</a>
                 <div class="dropdown">
-                    <img class="image-profile" src="{$resVal['img_profile']}"
+                    <img class="image-profile" loading="lazy" src="{$resVal['img_profile']}"
                         height="50" width="50" alt="profile" id="dropdownProfile" data-bs-toggle="dropdown"
                         aria-expanded="false">
         

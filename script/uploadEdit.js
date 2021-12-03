@@ -1,14 +1,13 @@
-const Upload = () => {
-    const dropArea = document.getElementById('input-upload-area'),
-        input = document.getElementById('input-image-upload'),
-        inputTitle = document.querySelectorAll('.input-form-upload'),
-        message = document.querySelector('.message'),
-        titleForm = document.getElementById('title-form-upload'),
-        buttonNext = document.getElementById('button-next-upload')
+const UploadEdit = () => {
+    const dropArea = document.getElementById('input-edit-area'),
+        input = document.getElementById('input-image-edit'),
+        inputTitle = document.querySelectorAll('.input-form-edit'),
+        titleForm = document.getElementById('title-form-edit'),
+        buttonNext = document.getElementById('button-next-edit'),
+        displayImage = document.getElementById('display-image')
     let file
 
     buttonNext.disabled = !inputTitle[0].value
-
 
     input.addEventListener('change', function(){
         file = this.files[0];
@@ -35,8 +34,7 @@ const Upload = () => {
 
     titleForm.addEventListener('keyup', (e) => {
         console.log(e.target.value)
-
-        buttonNext.disabled = !(e.target.value)
+        buttonNext.disabled = !(e.target.value);
     })
 
     const showImage = () => {
@@ -52,13 +50,12 @@ const Upload = () => {
                 fileReader.onload = () => {
                     let fileURL = fileReader.result
     
-                    message.style.display = 'none';
                     inputTitle[0].classList.add('active')
                     inputTitle[1].classList.add('active')
+
+
+                    displayImage.src = fileURL
     
-    
-                    let imgTag = `<img src="${fileURL}" class="input-image" alt="image">`;
-                    dropArea.innerHTML = imgTag;
                     dropArea.classList.add('image-exists')
                 }
             }else{
@@ -72,8 +69,4 @@ const Upload = () => {
     }
 }
 
-
-
-
-
-Upload()
+UploadEdit()

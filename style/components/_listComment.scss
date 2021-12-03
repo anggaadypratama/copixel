@@ -1,0 +1,54 @@
+.list-comment{
+
+    .comment-section{
+        display: flex;
+        margin-top: 10px;
+        margin-right: 10px;
+
+        &__img{
+            height: 30px;
+            width: 30px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        &__body{
+            margin-left: 10px;
+            margin-top: -2px;
+            width: 100%;
+
+            .comment-header{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                .danger{
+                    font-weight: 500;
+                    &:hover{
+                        background-color: #DC3444;
+                        color: white;
+                    }
+                }
+
+                a{
+                    font-size: 1rem;
+                    font-weight: 600;
+                    text-decoration: none;
+                    color: black;
+                }
+            }
+
+            .comment-body{
+                margin-top: .4rem;
+                margin-right: 1.2rem;
+                word-break: break-all;
+                white-space: normal;
+            }
+
+            .comment-date{
+                margin-top: -2px;
+                color: $ntxt;
+            }
+        }
+    }
+}

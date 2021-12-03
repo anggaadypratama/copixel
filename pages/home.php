@@ -14,6 +14,7 @@
         Post.description,
         Post.created_time,
         Post.id_users,
+        Post.views,
         Users.name,
         Users.img_profile
     SQL;
@@ -111,10 +112,12 @@
                                             >
                                             <p>{$name}</p>
                                         </a>
-                                            <label>
-                                                <input type="checkbox">
-                                                <span class="label">&#x2665;</span>
-                                            </label>
+                                            <div>
+                                                <div class="label">
+                                                    <i class="fas fa-eye"></i>
+                                                    <span>{$row['views']}</span>
+                                                </div>
+                                            </div>
                                     </div>
                                 </div>
                             </div>

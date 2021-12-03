@@ -57,7 +57,7 @@
                                                 <i class="fas fa-ellipsis-v"></i>
                                             </button>
                                             <ul class="dropdown-menu mt-1 dropdown-menu-end shadow">
-                                                <li><a href="#" class="dropdown-item">Edit</a></li>
+                                                <li><a href="?p=edit&pid=$idModal" class="dropdown-item">Edit</a></li>
                                                 <li><button type="button" class="dropdown-item danger" data-bs-toggle="modal" data-bs-target="#deleteModal-$i">Delete</button></li>
                                             </ul>
                                         </div>

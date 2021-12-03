@@ -7,12 +7,8 @@
         align-items: center;
     }
 
-
-
     .image-profile{
         position: relative;
-
-        
 
         .overlay{
             position: absolute;
@@ -27,16 +23,26 @@
             display: grid;
             place-items: center;
             transition: opacity .2s ease-in-out;
-            opacity: 0;
+            opacity: 1;
             cursor: pointer;
+
+            .fas{
+                color: white;
+                font-size: 38px;
+                opacity: 1;
+                transition: opacity .2s ease-in-out;
+                margin-left: 10px;
+            }
+
+            &:hover{
+                .fas{
+                    opacity: 0;
+                }
+            }
 
             &.disabled{
                 cursor: default;
-
-                &:hover{
-                    opacity: 0;
-                
-            }
+                opacity: 0;
             }
 
             
@@ -46,10 +52,8 @@
                 color: white;
                 font-weight: bold;
                 line-height: 20px;
-            }
-
-            &:hover{
                 opacity: 1;
+                transition: opacity .2s ease-in-out;
             }
         }
 
@@ -59,6 +63,10 @@
             height: 150px;
             object-fit: cover;
             border-radius: 50%;
+
+            box-shadow: 0 0 0 4px white, 
+                        0 0 0 9px $primary;
+
         }
         
 
@@ -70,7 +78,7 @@
     .user-form{
         display: flex;
         flex-direction: column;
-        margin-left: 25px;
+        margin-left: 40px;
 
         @media only screen and (max-width: 767px){
             margin-top: 20px;
@@ -113,6 +121,23 @@
 
             &:disabled{
                 background-color: transparent;
+            }
+        }
+
+        .edit-button{
+            display: flex;
+            
+            @media only screen and (max-width: 767px) {
+                justify-content: center;
+            }
+
+            .submit-profile{
+                
+                display: block;
+
+                &.disabled{
+                    display: none;
+                }
             }
         }
     }

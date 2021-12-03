@@ -1,8 +1,20 @@
 .detail-post{
+
+    &__wrapper{
+        margin-top: 50px;
+
+        @media only screen and (max-width: 767px){
+            margin-top: 25px;
+        }
+    }
+
+
     .image-post{
         width: 100%;
         height: auto;
         border-radius: 10px;
+        position: sticky;
+        top: 50px;
     }
 
     .content{
@@ -14,10 +26,16 @@
         &__top{
             > h2{
                 font-weight: 600;
+                text-overflow: ellipsis;
+
+                @media only screen and (max-width: 991px){
+                    margin-top: 1.4rem;
+                }
             }
     
             > h5 {
                 font-weight: 500;
+                text-overflow: ellipsis;
             }
     
             > p{
@@ -45,6 +63,9 @@
                 }
                 
                 &__name{
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow: hidden;
                     margin-left: 10px;
                     color: black;
                     font-weight: 600;
@@ -62,5 +83,62 @@
             }
         }
 
+        &__comment-section{
+            .input-comment{
+                display: flex;
+                &__img{
+                    height: 30px;
+                    width: 30px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+
+                &__input{
+                    background-color: $bg;
+                    border: none;
+                    width: 100%;
+
+                    outline: none;
+                    border-radius: 5px;
+                    margin-top: 5px;
+                    margin-left: 8px;
+                    margin-bottom: 8px;
+                    margin-right: 10px;
+                    resize: none;
+                }
+
+                &__wrapper{
+                    width: 100%;
+                    margin-left: 10px;
+                    background-color: $bg;
+                    border-radius: 5px 20px 20px 20px;
+                    padding: 5px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    span{
+                        font-weight: 600;
+                        margin-left: 8px;
+                    }
+                }
+
+                &__section{
+                    width: 85%;
+                }
+
+                &__submit{
+                    margin-right: 20px;
+                    margin-left: 20px;
+                    input{
+                        display: none;
+                    }
+
+                    .fas{
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
     }
 }

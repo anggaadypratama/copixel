@@ -4,6 +4,7 @@
 @import './components/navbar';
 @import './components/card';
 @import './components/editProfile';
+@import './components/listComment';
 
 @import './pages/auth';
 @import './pages/home';
@@ -16,7 +17,7 @@ body{
 }
 
 .btn{
-    border-radius: 8px;
+    border-radius: 0.5rem;
     font-weight: 600;
 
     &:focus, &:active{
@@ -41,21 +42,21 @@ body{
 }
 
 .btn-primary{
-    background-color: $secondary;
+    background-color: $secondary !important;
     border: none;
     font-family: $pop;
     transition: all .2s ease-in-out;
     
     &:hover{
-        background-color: rgba($color: $secondary, $alpha: .8);
+        background-color: rgba($color: $secondary, $alpha: .8) !important;
     }
     
     &:focus{
-        background-color: $darkSecondary;
+        background-color: $darkSecondary !important;
     }
     
     &:disabled{
-        background-color: rgba($color: $secondary, $alpha: .5);
+        background-color: rgba($color: $secondary, $alpha: .5) !important;
     }
 }
 

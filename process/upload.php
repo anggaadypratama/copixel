@@ -19,7 +19,7 @@
                 $res = $db->insert('Post',[
                     'id_post' => $id_post,
                     'title' => $title,
-                    'description' => $desc,
+                    'description' => strlen($desc) > 0 ? $desc : NULL,
                     'img_post' => $img,
                     'id_users' => $cookiesData[1]
                 ]);

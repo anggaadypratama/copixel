@@ -50,7 +50,7 @@
   padding: 3px 20px;
   max-width: 400px;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   -webkit-transition: all ease-in-out .2s;
   transition: all ease-in-out .2s;
   margin-right: 20px;
@@ -134,7 +134,7 @@
   max-height: 240px;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 8px;
+  border-radius: 0.5rem;
 }
 
 @media only screen and (max-width: 767px) {
@@ -147,7 +147,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -212,20 +212,16 @@
   font-size: 14px;
 }
 
-.card .post-info input[type=checkbox] {
-  display: none;
-}
-
 .card .post-info .label {
   display: inline-block;
   cursor: pointer;
   vertical-align: 5px;
-  font-size: 1.2rem;
-  margin-top: -4px;
+  font-size: 1rem;
+  margin-top: -8px;
 }
 
-.card .post-info input[type=checkbox]:checked + .label {
-  color: #e94c4c;
+.card .post-info .label span {
+  margin-left: 3px;
 }
 
 .image-option {
@@ -325,15 +321,25 @@
   place-items: center;
   -webkit-transition: opacity .2s ease-in-out;
   transition: opacity .2s ease-in-out;
-  opacity: 0;
+  opacity: 1;
   cursor: pointer;
+}
+
+.edit-profile-form .image-profile .overlay .fas {
+  color: white;
+  font-size: 38px;
+  opacity: 1;
+  -webkit-transition: opacity .2s ease-in-out;
+  transition: opacity .2s ease-in-out;
+  margin-left: 10px;
+}
+
+.edit-profile-form .image-profile .overlay:hover .fas {
+  opacity: 0;
 }
 
 .edit-profile-form .image-profile .overlay.disabled {
   cursor: default;
-}
-
-.edit-profile-form .image-profile .overlay.disabled:hover {
   opacity: 0;
 }
 
@@ -343,10 +349,9 @@
   color: white;
   font-weight: bold;
   line-height: 20px;
-}
-
-.edit-profile-form .image-profile .overlay:hover {
   opacity: 1;
+  -webkit-transition: opacity .2s ease-in-out;
+  transition: opacity .2s ease-in-out;
 }
 
 .edit-profile-form .image-profile img {
@@ -355,6 +360,8 @@
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 50%;
+  -webkit-box-shadow: 0 0 0 4px white, 0 0 0 9px #6A54C0;
+          box-shadow: 0 0 0 4px white, 0 0 0 9px #6A54C0;
 }
 
 .edit-profile-form .image-profile #img-profile {
@@ -369,7 +376,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  margin-left: 25px;
+  margin-left: 40px;
 }
 
 @media only screen and (max-width: 767px) {
@@ -419,6 +426,90 @@
 
 .edit-profile-form .user-form__desc:disabled {
   background-color: transparent;
+}
+
+.edit-profile-form .user-form .edit-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media only screen and (max-width: 767px) {
+  .edit-profile-form .user-form .edit-button {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.edit-profile-form .user-form .edit-button .submit-profile {
+  display: block;
+}
+
+.edit-profile-form .user-form .edit-button .submit-profile.disabled {
+  display: none;
+}
+
+.list-comment .comment-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.list-comment .comment-section__img {
+  height: 30px;
+  width: 30px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 50%;
+}
+
+.list-comment .comment-section__body {
+  margin-left: 10px;
+  margin-top: -2px;
+  width: 100%;
+}
+
+.list-comment .comment-section__body .comment-header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.list-comment .comment-section__body .comment-header .danger {
+  font-weight: 500;
+}
+
+.list-comment .comment-section__body .comment-header .danger:hover {
+  background-color: #DC3444;
+  color: white;
+}
+
+.list-comment .comment-section__body .comment-header a {
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: black;
+}
+
+.list-comment .comment-section__body .comment-body {
+  margin-top: .4rem;
+  margin-right: 1.2rem;
+  word-break: break-all;
+  white-space: normal;
+}
+
+.list-comment .comment-section__body .comment-date {
+  margin-top: -2px;
+  color: #6E6D7A;
 }
 
 .right-section {
@@ -638,7 +729,7 @@
 
 .home .content .tags-list label {
   padding: 10px 20px;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   cursor: pointer;
   z-index: 90;
   color: #6E6D7A;
@@ -748,6 +839,24 @@
   }
 }
 
+.upload__wrapper .form-upload__wrapper .input-form-edit {
+  width: 100%;
+  height: 100px;
+  outline: none;
+  border: none;
+}
+
+.upload__wrapper .form-upload__wrapper .input-form-edit.title {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 500px) {
+  .upload__wrapper .form-upload__wrapper .input-form-edit.title {
+    font-size: 18px;
+  }
+}
+
 .upload__wrapper .form-upload__wrapper .drag-area {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -803,10 +912,23 @@
      object-fit: cover;
 }
 
+.detail-post__wrapper {
+  margin-top: 50px;
+}
+
+@media only screen and (max-width: 767px) {
+  .detail-post__wrapper {
+    margin-top: 25px;
+  }
+}
+
 .detail-post .image-post {
   width: 100%;
   height: auto;
   border-radius: 10px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 50px;
 }
 
 .detail-post .content {
@@ -824,10 +946,18 @@
 
 .detail-post .content__top > h2 {
   font-weight: 600;
+  text-overflow: ellipsis;
+}
+
+@media only screen and (max-width: 991px) {
+  .detail-post .content__top > h2 {
+    margin-top: 1.4rem;
+  }
 }
 
 .detail-post .content__top > h5 {
   font-weight: 500;
+  text-overflow: ellipsis;
 }
 
 .detail-post .content__top > p {
@@ -863,6 +993,9 @@
 }
 
 .detail-post .content__bottom .profile__name {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
   margin-left: 10px;
   color: black;
   font-weight: 600;
@@ -877,12 +1010,78 @@
   text-align: right;
 }
 
+.detail-post .content__comment-section .input-comment {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.detail-post .content__comment-section .input-comment__img {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.detail-post .content__comment-section .input-comment__input {
+  background-color: #F3F3F4;
+  border: none;
+  width: 100%;
+  outline: none;
+  border-radius: 5px;
+  margin-top: 5px;
+  margin-left: 8px;
+  margin-bottom: 8px;
+  margin-right: 10px;
+  resize: none;
+}
+
+.detail-post .content__comment-section .input-comment__wrapper {
+  width: 100%;
+  margin-left: 10px;
+  background-color: #F3F3F4;
+  border-radius: 5px 20px 20px 20px;
+  padding: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.detail-post .content__comment-section .input-comment__wrapper span {
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.detail-post .content__comment-section .input-comment__section {
+  width: 85%;
+}
+
+.detail-post .content__comment-section .input-comment__submit {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.detail-post .content__comment-section .input-comment__submit input {
+  display: none;
+}
+
+.detail-post .content__comment-section .input-comment__submit .fas {
+  cursor: pointer;
+}
+
 body {
   font-family: "poppins";
 }
 
 .btn {
-  border-radius: 8px;
+  border-radius: 0.5rem;
   font-weight: 600;
 }
 
@@ -908,7 +1107,7 @@ body {
 }
 
 .btn-primary {
-  background-color: #F87F28;
+  background-color: #F87F28 !important;
   border: none;
   font-family: "poppins";
   -webkit-transition: all .2s ease-in-out;
@@ -916,15 +1115,15 @@ body {
 }
 
 .btn-primary:hover {
-  background-color: rgba(248, 127, 40, 0.8);
+  background-color: rgba(248, 127, 40, 0.8) !important;
 }
 
 .btn-primary:focus {
-  background-color: #da5026;
+  background-color: #da5026 !important;
 }
 
 .btn-primary:disabled {
-  background-color: rgba(248, 127, 40, 0.5);
+  background-color: rgba(248, 127, 40, 0.5) !important;
 }
 
 .btn-light {

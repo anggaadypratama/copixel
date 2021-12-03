@@ -22,7 +22,7 @@
             if($res->num_rows === 0){
                 $res = $db->insert('Users',[
                     'id_users' => rand(100, 100000000),
-                    'name' => $name,
+                    'name' => ucwords($name),
                     'email' => $email,
                     'password' => password_hash($password, PASSWORD_DEFAULT),
                     'img_profile' => "$target_dir$name.svg"
