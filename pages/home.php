@@ -22,7 +22,7 @@
     $search = $_GET['search'];
 
     $conditionalMessage = isset($search) && !empty($search) ?
-                            "Berikut hasil pencarian dari '<span>$search</span>'" :
+                            "Berikut hasil pencarian dari <br>'<span>$search</span>'" :
                             "Temukan Gambar Favoritmu";
 
     if(isset($search)){
@@ -48,19 +48,25 @@
 <div class="home">
     <?php if(!$auth){
         echo <<<STR
-            <div class="banner">
-                <div class="container banner__wrapper">
-                    <div class="desc">
-                        <p>Temukan Gambar Dan Bagikan Gambarmu Disini</p>
-                        <a href="?p=auth&s=register" class="btn btn-primary px-5 py-3 mt-3">Daftar</a>
+            <div class="container mt-4">
+                <div class="banner">
+                    <div class="banner__wrapper">
+                        <div class="desc">
+                            <p>Temukan Gambar Dan Bagikan Gambarmu Disini</p>
+                            <a href="?p=auth&s=register" class="btn btn-primary px-5 py-3 mt-4">Daftar</a>
+                        </div>
+                        <img src="image/people.png" alt="orang">
                     </div>
-                    <img src="image/people.png" alt="orang">
                 </div>
             </div>
         STR;
     }else{
         echo <<<STR
-        <h3 class="text-center mt-5 mb-5 conditional-message">$conditionalMessage</h3>
+        <div class="container mt-4">
+            <div class="message-wrapper">
+                <div class="text-center mt-5 mb-5 conditional-message home">$conditionalMessage</div>
+            </div>
+        </div>
     STR;
     }?>
 
@@ -84,7 +90,7 @@
             ?>
         </ul> -->
         <div class="container-sm mt-4 mb-4">
-            <div class="row gx-4">
+            <div class="row gx-4" data-masonry='{"percentPosition": true }'>
 
                 <?php
                         while($row = $res->fetch_assoc()){

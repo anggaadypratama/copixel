@@ -35,9 +35,19 @@
                     </div>
                     <div class="drag-area">
                         <label for="input-image-edit" class="input-area" id="input-edit-area">
-                            <img src="<?= $resVal['img_post'] ?>" class="input-image" id="display-image" alt="image">
+                            <!-- <img src="<?= $resVal['img_post'] ?>" class="input-image" id="display-image" alt="image"> -->
+                            <div class="image-wrapper-ue">
+                                <img src="<?= $resVal['img_post'] ?>" class="image-wrapper-ue__img" id="display-image"
+                                    alt="image">
+                                <div class="image-wrapper-ue__overlay">
+                                    <div class="information-wrapper">
+                                        <i class="fas fa-image"></i>
+                                        <h5>Ganti Gambar</h5>
+                                    </div>
+                                </div>
+                            </div>
                         </label>
-                        <input type="file" class="d-none" name="image" id="input-image-edit">
+                        <input type="file" class="d-none" name="image-edit" id="input-image-edit">
                     </div>
                     <div class="desc mt-5">
                         <?php if(strlen($resVal['description']) > 0){ ?>
@@ -76,4 +86,18 @@
     </div>
 </div>
 
-<script type="module" src="../script/upload.js"></script>
+<div class="modal fade" id="modal-edit-alert" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Error</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="modal-error-edit-message"></p>
+            </div>
+
+        </div>
+    </div>
+</div>

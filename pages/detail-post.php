@@ -81,7 +81,7 @@
                                 <label for="comment-submit">
                                     <i class="fas fa-paper-plane"></i>
                                 </label>
-                                <input type="submit" id="comment-submit" name="submit">
+                                <input type="submit" id="comment-submit" class="comment-submit" name="submit" disabled>
                             </div>
                         </form>
                     </div>

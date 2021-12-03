@@ -14,7 +14,7 @@
     <div class="search-icon">
         <div class="logo">
             <a href="process/search.php">
-                COPIXEL
+                Copixel
             </a>
         </div>
         <?php if($auth && cookiesData[1]){ ?>
@@ -41,7 +41,6 @@
         
                     <ul class="dropdown-menu mt-3" aria-labelledby="dropdownProfile">
                         <li><a class="dropdown-item" href="?p=profile&uid={$cookiesData[1]}">Profil</a></li>
-                        <li><a class="dropdown-item" href="#">Ubah Password</a></li>
                         <li><a class="dropdown-item" href="process/logout.php">Keluar</a></li>
                     </ul>
                 </div>

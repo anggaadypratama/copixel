@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Nov 30, 2021 at 06:28 PM
+-- Generation Time: Dec 03, 2021 at 03:00 PM
 -- Server version: 5.7.34
 -- PHP Version: 7.4.21
 
@@ -29,22 +29,21 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `Comment` (
   `id_comment` int(11) NOT NULL,
-  `body` varchar(50) NOT NULL,
-  `timestamp` date NOT NULL,
+  `body` varchar(256) NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `id_post` int(11) NOT NULL,
   `id_users` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `Liked`
+-- Dumping data for table `Comment`
 --
 
-CREATE TABLE `Liked` (
-  `id_users` int(11) NOT NULL,
-  `id_post` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `Comment` (`id_comment`, `body`, `timestamp`, `id_post`, `id_users`) VALUES
+(235876160, 'hai', '2021-12-03 14:42:00', 912848179, 18531905),
+(522801795, 'hai', '2021-12-03 14:42:10', 55918442, 18531905),
+(538129728, 'hai sayang', '2021-12-03 14:21:56', 55918442, 14799331),
+(968187365, 'udin', '2021-12-03 14:35:07', 912848179, 14799331);
 
 -- --------------------------------------------------------
 
@@ -54,12 +53,24 @@ CREATE TABLE `Liked` (
 
 CREATE TABLE `Post` (
   `id_post` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL,
+  `title` varchar(50) NOT NULL,
   `img_post` varchar(100) NOT NULL,
   `description` longtext,
   `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `id_users` int(11) NOT NULL
+  `id_users` int(11) NOT NULL,
+  `views` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `Post`
+--
+
+INSERT INTO `Post` (`id_post`, `title`, `img_post`, `description`, `created_time`, `id_users`, `views`) VALUES
+(55918442, 'Zhong Xina kasjfldajsdlfkjalksdfjlaksjdflkajsdflk', 'image/post/_yuPWpNo.jpeg', 'your social credit is -999999999999', '2021-12-03 14:21:22', 14799331, 26),
+(171007235, 'Psycho', 'image/post/16385426880911929138a71d9c3d1ebae79e1ca505.jpeg', '', '2021-12-03 14:44:48', 18531905, 0),
+(218610358, 'BALI', 'image/post/1638542662aron-visuals-ycyLUcEoalE-unsplash.jpg', 'ITS A WONDERFULL LAND IN INDONESIA', '2021-12-03 14:44:22', 18531905, 36),
+(912848179, 'the wok', 'image/post/16385412575c5.jpeg', '', '2021-12-03 14:20:57', 14799331, 30),
+(963275130, 'Kanon jaga kape', 'image/post/1638542713shibuya kanon.jpg', '', '2021-12-03 14:45:13', 18531905, 0);
 
 -- --------------------------------------------------------
 
@@ -73,7 +84,7 @@ CREATE TABLE `Users` (
   `email` varchar(50) NOT NULL,
   `password` longtext NOT NULL,
   `about` varchar(50) DEFAULT NULL,
-  `img_profile` varchar(100) DEFAULT NULL
+  `img_profile` longtext
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -81,8 +92,8 @@ CREATE TABLE `Users` (
 --
 
 INSERT INTO `Users` (`id_users`, `name`, `email`, `password`, `about`, `img_profile`) VALUES
-(75938662, 'Angga Ady Pratama', 'anggaadypratama@outlook.com', '$2y$10$4Ji1hkZi3Ehx7/gFdji92uozGBKKgC1BDGNG9l8hiT0Gp7ke9YGIC', 'I love myself', ''),
-(87583428, 'Maharani', 'apangga24@gmail.com', '$2y$10$xuGd3hFkdIkJ/F02Y83UX.Q0LjE2YNbzqYuVowE7e72AzL./w5/jG', 'Testing aja lah', '');
+(14799331, 'Angga Ady Pratama', 'anggaadypratama@outlook.com', '$2y$10$NVMxwdhrwm77XqSKpekQ7e/3mKFrebKYpgtMJwijFGXMeKVUeG5Be', NULL, 'image/profile/1638540891_angga ady pratama.svg'),
+(18531905, 'Intan Kustanti', 'intanks9898@gmail.com', '$2y$10$ru0FmO1T7gJYSZI5eFbqbuxdwDihZeSLPkopd2QkzYbmkzNyj.LB2', NULL, 'image/profile/1638542146_Intan Kustanti.svg');
 
 --
 -- Indexes for dumped tables
@@ -95,13 +106,6 @@ ALTER TABLE `Comment`
   ADD PRIMARY KEY (`id_comment`),
   ADD KEY `id_post` (`id_post`),
   ADD KEY `id_users` (`id_users`);
-
---
--- Indexes for table `Liked`
---
-ALTER TABLE `Liked`
-  ADD PRIMARY KEY (`id_users`,`id_post`),
-  ADD KEY `id_post` (`id_post`);
 
 --
 -- Indexes for table `Post`
@@ -126,13 +130,6 @@ ALTER TABLE `Users`
 ALTER TABLE `Comment`
   ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`id_post`) REFERENCES `Post` (`id_post`),
   ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`id_users`) REFERENCES `Users` (`id_users`);
-
---
--- Constraints for table `Liked`
---
-ALTER TABLE `Liked`
-  ADD CONSTRAINT `liked_ibfk_1` FOREIGN KEY (`id_users`) REFERENCES `Users` (`id_users`),
-  ADD CONSTRAINT `liked_ibfk_2` FOREIGN KEY (`id_post`) REFERENCES `Post` (`id_post`);
 
 --
 -- Constraints for table `Post`

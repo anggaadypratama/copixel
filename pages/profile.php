@@ -4,7 +4,7 @@
             <?php include "components/edit-profile.php"; ?>
         </div>
         <div class="content mt-4">
-            <div class="row">
+            <div class="row" data-masonry='{"percentPosition": true }'>
                 <?php
                     include '/utilities/db.php';
 

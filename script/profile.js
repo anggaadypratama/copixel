@@ -26,11 +26,12 @@ const EditProfile = () => {
 
     editBtn.onclick = (e) => {
         e.preventDefault()
-        inputFile.toggleAttribute('disabled')
-        inputName.toggleAttribute('disabled')
-        inputDesc.toggleAttribute('disabled')
-        imgOverlay.classList.toggle('disabled')
-        editBtnSubmit.classList.toggle('disabled')
+        inputFile?.toggleAttribute('disabled')
+        inputName?.toggleAttribute('disabled')
+        inputDesc?.toggleAttribute('disabled')
+
+        imgOverlay?.classList.toggle('disabled')
+        editBtnSubmit?.classList.toggle('disabled')
     }
 }
 

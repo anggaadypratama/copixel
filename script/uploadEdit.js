@@ -4,8 +4,12 @@ const UploadEdit = () => {
         inputTitle = document.querySelectorAll('.input-form-edit'),
         titleForm = document.getElementById('title-form-edit'),
         buttonNext = document.getElementById('button-next-edit'),
-        displayImage = document.getElementById('display-image')
+        displayImage = document.getElementById('display-image'),
+        modalEditAlert = document.getElementById('modal-edit-alert'),
+        modalErrorEditMessage = document.getElementById('modal-error-edit-message')
     let file
+
+    const alertModal = new bootstrap.Modal(modalEditAlert)
 
     buttonNext.disabled = !inputTitle[0].value
 
@@ -33,7 +37,6 @@ const UploadEdit = () => {
     })
 
     titleForm.addEventListener('keyup', (e) => {
-        console.log(e.target.value)
         buttonNext.disabled = !(e.target.value);
     })
 
@@ -59,11 +62,13 @@ const UploadEdit = () => {
                     dropArea.classList.add('image-exists')
                 }
             }else{
-                alert("Ukuran Gambar Terlalu besar!");
+                alertModal.show()
+                modalErrorEditMessage.innerHTML = `Ukuran gambar terlalu besar, Maksimal adalah 5MB`
                 dropArea.classList.remove("active");
             }
         }else{
-            alert("Ini bukan format gambar!");
+            alertModal.show()
+            modalErrorEditMessage.innerHTML = `<b>${file.name}</b> Ini bukan format gambar!`
             dropArea.classList.remove("active");
         }
     }

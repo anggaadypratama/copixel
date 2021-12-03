@@ -11,7 +11,7 @@
                 $title = $_POST['title'];
                 $desc = $_POST['desc'];
 
-                if(strlen($_FILES['image']['name']) === 0){
+                if(strlen($_FILES['image-edit']['name']) === 0){
                     $db->select('Post','img_post',"WHERE id_post='$pid'");
                     $res = $db->sql;
                     $resVal = $res->fetch_assoc();
@@ -32,8 +32,8 @@
                     unlink("../{$resVal['img_post']}");
     
                     $target_dir = "image/post/";
-                    $img = $target_dir.basename($_FILES['image']['name']);
-                    move_uploaded_file($_FILES['image']['tmp_name'], "../$img");
+                    $img = $target_dir.basename($_FILES['image-edit']['name']);
+                    move_uploaded_file($_FILES['image-edit']['tmp_name'], "../$img");
     
                     $res = $db->update('Post',[
                         'title' => $title,

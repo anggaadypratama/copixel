@@ -4,7 +4,12 @@ const Upload = () => {
         inputTitle = document.querySelectorAll('.input-form-upload'),
         message = document.querySelector('.message'),
         titleForm = document.getElementById('title-form-upload'),
-        buttonNext = document.getElementById('button-next-upload')
+        buttonNext = document.getElementById('button-next-upload'),
+        modalUploadAlert = document.getElementById('modal-upload-alert'),
+        modalErrorUploadMessage = document.getElementById('modal-error-upload-message')
+
+        const alertModal = new bootstrap.Modal(modalUploadAlert)
+
     let file
 
     buttonNext.disabled = !inputTitle[0].value
@@ -34,13 +39,14 @@ const Upload = () => {
     })
 
     titleForm.addEventListener('keyup', (e) => {
-        console.log(e.target.value)
-
         buttonNext.disabled = !(e.target.value)
     })
 
+
+
     const showImage = () => {
         let fileType = file.type
+
         let validExtensions = ["image/jpeg", "image/jpg", "image/png"]
 
         if(validExtensions.includes(fileType)){
@@ -55,18 +61,28 @@ const Upload = () => {
                     message.style.display = 'none';
                     inputTitle[0].classList.add('active')
                     inputTitle[1].classList.add('active')
-    
-    
-                    let imgTag = `<img src="${fileURL}" class="input-image" alt="image">`;
+
+                    let imgTag = `
+                    <div class="image-wrapper-ue">
+                        <img src="${fileURL}" class="image-wrapper-ue__img" alt="image">
+                        <div class="image-wrapper-ue__overlay">
+                            <div class="information-wrapper">
+                                <i class="fas fa-image"></i>
+                                <h5>Ganti Gambar</h5>
+                            </div>
+                        </div>
+                    </div>`;
                     dropArea.innerHTML = imgTag;
                     dropArea.classList.add('image-exists')
                 }
             }else{
-                alert("Ukuran Gambar Terlalu besar!");
+                alertModal.show()
+                modalErrorUploadMessage.innerHTML = `Ukuran gambar terlalu besar, Maksimal adalah 5MB`
                 dropArea.classList.remove("active");
             }
         }else{
-            alert("Ini bukan format gambar!");
+            alertModal.show()
+            modalErrorUploadMessage.innerHTML = `<b>${file.name}</b> Ini bukan format gambar!`
             dropArea.classList.remove("active");
         }
     }

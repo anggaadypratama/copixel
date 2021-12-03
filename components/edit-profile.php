@@ -28,14 +28,14 @@
     <div class="user-form ml-5">
         <input class="user-form__name <?= $uid !== $cookiesData[1] ? 'user' : '' ?>" type="text" name="name"
             placeholder="Tidak Boleh Kosong" value="<?= ucwords($resVal['name']) ?>" maxlength="20" id="name-profile"
-            disabled>
+            required disabled>
         <input class="user-form__desc mt-2" type="text" name="about" maxlength="49"
             placeholder="<?= $auth && ($uid === $cookiesData[1]) ? 'Isi tentang kamu...' : ''?>"
             value="<?= $resVal['about'] ?>" maxlength="50" id="desc-profile" disabled>
         <?php if($auth && $uid === $cookiesData[1]){
             echo <<<STR
                 <div class="edit-button mt-4">
-                    <button class="btn rounded btn-outline-secondary btn-sm" id="edit-btn"
+                    <button type="button" class="btn rounded btn-outline-secondary btn-sm" id="edit-btn"
                         >
                         Edit Profile
                     </button>

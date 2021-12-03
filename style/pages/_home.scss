@@ -4,6 +4,7 @@
     .banner{
         height: 500px;
         width: 100%;
+        border-radius: 1rem;
         background-color: rgba($color: $primary, $alpha: .9);
 
         @media only screen and (max-width: 767px) {
@@ -19,9 +20,13 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding-left: 75px;
+            padding-right: 25px;
 
             @media only screen and (max-width: 767px) {
                 flex-direction: column-reverse;
+                padding-left: 25px;
+                padding-right: 25px;
             }
 
             img{
@@ -54,12 +59,13 @@
                     font-weight: 600;
                     max-width: 600px;
                     width: 100%;
-                    font-size: 48px;
+                    font-size: 44px;
                     line-height: 60px;
+                    word-break: keep-all;
 
                     @media only screen and (max-width: 767px) {
-                        font-size: 28px;
-                        line-height: 34px;
+                        font-size: 24px;
+                        line-height: 30px;
                         text-align: center;
                     }
 
@@ -119,12 +125,30 @@
 
     }
 
-    .conditional-message{
-        font-weight: 600;
+    .message-wrapper{
+        padding: 5px;
+        background-color: $primary;
+        border-radius: 8px;
 
-        span{
-            font-style: italic;
+        .conditional-message{
+            font-size: 20px;
+            color: $bg;
+            font-weight: 400;
+
+            &.home{
+                font-size: 28px;
+                font-weight: bold;
+                color: white;
+            }
+    
+            span{
+                font-size: 28px;
+                color: white;
+                font-style: italic;
+                font-weight: bold;
+            }
         }
     }
+
 }
 

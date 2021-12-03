@@ -26,7 +26,7 @@
                         <p>Gambar yang kamu unggah juga digunakan sebagai thumbnail pada feed kamu</p>
                     </div>
                     <div class="title">
-                        <input type="text" class="input-form-upload title" id="title-form-upload" name="title"
+                        <input type="text" class="input-form-upload title" id="title-form-upload" name="title" required
                             maxlength="49" placeholder="Masukan Nama Unggahan">
                     </div>
                     <div class="drag-area">
@@ -38,11 +38,11 @@
                                 </div>
                             </div>
                         </label>
-                        <input type="file" class="d-none" name="image" id="input-image-upload">
+                        <input type="file" class="d-none" name="image-upload" id="input-image-upload" required>
                     </div>
                     <div class="desc mt-5">
                         <textarea placeholder="Tulis apapun disini yang berkaitan dengan gambar mu"
-                            class="input-form-upload" name="desc" id="" cols="30" rows="10"></textarea>
+                            class="input-form-upload" name="desc" cols="30" rows="10"></textarea>
                     </div>
                 </div>
             </div>
@@ -70,4 +70,18 @@
     </div>
 </div>
 
-<script type="module" src="../script/upload.js"></script>
+<div class="modal fade" id="modal-upload-alert" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Error</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="modal-error-upload-message"></p>
+            </div>
+
+        </div>
+    </div>
+</div>
