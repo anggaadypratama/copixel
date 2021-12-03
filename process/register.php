@@ -12,7 +12,7 @@
             $email = $_POST['email'];
             $password = $_POST['password'];
             $r_password = $_POST['r_password'];
-            $imgUrl = $_POST['img-url'];
+            $imgUrl = $_POST['img-url']; 
 
             $nameOfImage = time()."_$name";
 

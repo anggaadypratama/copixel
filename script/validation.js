@@ -34,8 +34,10 @@ const request = async (url, init, cb) => {
   cb(data)
 }
 
-form?.addEventListener('submit', (e) => {
+form.addEventListener('submit', (e) => {
   e.preventDefault()
+
+  console.log(`${btoa(svg)}`)
 
   const formData = new FormData()
   for(let row of form){
@@ -48,18 +50,27 @@ form?.addEventListener('submit', (e) => {
     method: 'POST',
     body: formData
   },(res) => {
+    console.log(res.status)
     if(sectionParams === 'login'){
       switch(res.status){
-        case 'email_salah': responseAlert({message : 'Email yang dimasukan salah!'})
-        case 'password_salah':  responseAlert({message :'Password yang dimasukan salah!'})
+        case 'email_salah': 
+          responseAlert({message : 'Email yang dimasukan salah!'})
+          break;
+        case 'password_salah':  
+          responseAlert({message :'Password yang dimasukan salah!'})
+          break;
         default:
           location.reload()
           authAlert.classList.add('d-none')
       }
     }else{
       switch(res.status){
-        case 'email_exists': responseAlert({message :'Email sudah ada!'})
-        case 'pass_not_match':  responseAlert({message :'Password tidak sama!'})
+        case 'email_exists': 
+          responseAlert({message :'Email sudah ada!'})
+          break;
+        case 'pass_not_match':  
+          responseAlert({message :'Password tidak sama!'})
+          break;
         default:
           responseAlert({message :'Daftar berhasil, Mohon Tunggu!!!', status: true})
           request(`process/login.php`,{

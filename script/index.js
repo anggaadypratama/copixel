@@ -5,7 +5,7 @@ const conMessage = document.querySelector('.conditional-message')
 
 const falseStatus = [undefined, null]
 
-urlParams.get('search')?.length === 0 || urlParams.get('search')?.includes(falseStatus) ?
+urlParams.get('search')?.length < 1  ?
     conMessage?.classList.add('home') :
     conMessage?.classList.remove('home')
 

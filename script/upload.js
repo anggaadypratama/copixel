@@ -24,7 +24,6 @@ const Upload = () => {
     dropArea.addEventListener('dragover', (e) => {
         e.preventDefault()
         dropArea.classList.add('active')
-
     })
 
     dropArea.addEventListener('dragleave', (e) => {

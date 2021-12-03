@@ -8,14 +8,12 @@
 
     function getCookiesData(){
         if(isset($_COOKIE['token'])){
-
-
             $token = $_COOKIE['token'];
             $decrypt = encrypt_decrypt('decrypt',$token);
             $data = explode(',',$decrypt);
 
             $db = new DB();
-            
+
             $db->select('Users','*',"WHERE id_users='$data[1]'");
             $res = $db->sql;
 
@@ -23,8 +21,7 @@
                 setcookie('token','',time() - 3600,'/');
                 header('location: /copixel');
             }else{
-
-            return $data;
+                return $data;
             }
         }
     }
