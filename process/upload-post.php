@@ -5,16 +5,17 @@
     $cookiesData = getCookiesData();
     $auth = (boolean)$cookiesData[0];
 
+    header('Content-Type: application/json; charset=utf-8');
+
         if($_SERVER['REQUEST_METHOD'] == "POST"){
-            if(isset($_POST['submit'])){
                 $target_dir = "image/post/";
 
                 $id_post = rand(1,1000000000);
                 $title = $_POST['title'];
                 $desc = $_POST['desc'];
-                $img = $target_dir.basename(time().$_FILES['image-upload']['name']);
+                $img = $target_dir.basename(time()."_".$_FILES['image-form-upload']['name']);
 
-                move_uploaded_file($_FILES['image-upload']['tmp_name'], "../$img");
+                move_uploaded_file($_FILES['image-form-upload']['tmp_name'], "../$img");
 
                 $res = $db->insert('Post',[
                     'id_post' => $id_post,
@@ -25,8 +26,15 @@
                     'views' => '0'
                 ]);
 
+                // echo json_encode(['status' => true, 'uid' => $cookiesData[1]]);
+
+
                 if($res === true){
-                    header("location: ../?p=profile&uid=$cookiesData[1]");
+                    echo json_encode(['status' => true, 'uid' => $cookiesData[1]]);
+
+                    // header("location: ../?p=profile&uid=$cookiesData[1]");
+                }else{
+                    echo json_encode(['status' => false]);
                 }
-            }
+            
         }

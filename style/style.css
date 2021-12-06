@@ -1234,6 +1234,11 @@ h1, h2, h3, h4, h5 {
   display: block;
 }
 
+input[type="file"] {
+  display: none;
+  visibility: hidden;
+}
+
 .input-image {
   max-width: 700px;
   width: 100%;
@@ -1284,6 +1289,10 @@ h1, h2, h3, h4, h5 {
 }
 
 .image-wrapper-ue__overlay:hover {
+  opacity: 1;
+}
+
+.image-wrapper-ue__overlay.active {
   opacity: 1;
 }
 /*# sourceMappingURL=style.css.map */
