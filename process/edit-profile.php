@@ -29,7 +29,7 @@
                 unlink("../{$resVal['img_profile']}");
 
                 $target_dir = "image/profile/";
-                $img = $target_dir.basename($_FILES['img-profile']['name']);
+                $img = $target_dir.basename(time()."_".$_FILES['img-profile']['name']);
                 move_uploaded_file($_FILES['img-profile']['tmp_name'], "../$img");
 
                 $res = $db->update('Users',[

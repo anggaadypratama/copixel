@@ -17,7 +17,7 @@
 
 <div class="upload">
     <div class="container upload__wrapper">
-        <form method="post" enctype="multipart/form-data" action="process/edit-post.php">
+        <form method="post" id="submit-edit">
             <input type="hidden" name="pid" value="<?= $pid?>">
             <div class="action-button d-flex justify-content-between  mt-4 mb-4">
                 <a class="btn btn-outline-secondary px-4 py-2"
@@ -35,11 +35,10 @@
                     </div>
                     <div class="drag-area">
                         <label for="input-image-edit" class="input-area" id="input-edit-area">
-                            <!-- <img src="<?= $resVal['img_post'] ?>" class="input-image" id="display-image" alt="image"> -->
                             <div class="image-wrapper-ue">
                                 <img src="<?= $resVal['img_post'] ?>" class="image-wrapper-ue__img" id="display-image"
                                     alt="image">
-                                <div class="image-wrapper-ue__overlay">
+                                <div class="image-wrapper-ue__overlay" id="img-edit-overlay">
                                     <div class="information-wrapper">
                                         <i class="fas fa-image"></i>
                                         <h5>Ganti Gambar</h5>
@@ -87,17 +86,19 @@
 </div>
 
 <div class="modal fade" id="modal-edit-alert" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    aria-labelledby="modal-title" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Error</h5>
+                <h5 class="modal-title" id="modal-title"></h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p id="modal-error-edit-message"></p>
             </div>
+            <div class="modal-footer" id="modal-confirm-footer">
 
+            </div>
         </div>
     </div>
 </div>

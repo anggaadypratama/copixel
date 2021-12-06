@@ -43,13 +43,13 @@
 
     <!-- <div id="overlay"></div> -->
 
-
-    <script type="module" src="./script/upload.js"></script>
-    <script type="module" src="./script/uploadEdit.js"></script>
-    <script type="module" src="./script/profile.js"></script>
-    <script type="module" src="./script/comment.js"></script>
+    <script type="module" src="./script/post.js"></script>
+    <!-- <script src="./script/upload.js"></script>
+    <script src="./script/uploadEdit.js"></script> -->
+    <script src="./script/profile.js"></script>
+    <script src="./script/comment.js"></script>
     <script type="module" src="./script/validation.js"></script>
-    <script type="module" src="./script/index.js"></script>
+    <script src="./script/index.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">

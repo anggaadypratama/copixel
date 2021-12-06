@@ -3,9 +3,11 @@ const urlParams = new URLSearchParams(queryString);
 
 const conMessage = document.querySelector('.conditional-message')
 
+const searchParams = urlParams.get('search')
+
 const falseStatus = [undefined, null]
 
-urlParams.get('search')?.length < 1  ?
+searchParams?.length < 1 || falseStatus.includes(searchParams)  ?
     conMessage?.classList.add('home') :
     conMessage?.classList.remove('home')
 
@@ -13,8 +15,6 @@ urlParams.get('search')?.length < 1  ?
 
 const textAreaComment = document.getElementById('textarea-comment')
 const submitComment = document.querySelectorAll('.comment-submit')
-
-
 
 for(let row of submitComment){
     console.log(row)
