@@ -1,7 +1,7 @@
 <?php
-        include '/utilities/cookiesData.php';
+        include_once 'utilities/cookiesData.php';
 
-        $cookiesData = getCookiesData();
+        $cookiesData = getCookies();
         $auth = (boolean)$cookiesData[0];
 
         $pid = $_GET['pid'];

@@ -6,9 +6,9 @@
         <div class="content mt-4">
             <div class="row" data-masonry='{"percentPosition": true }'>
                 <?php
-                    include '/utilities/db.php';
+                    include_once 'utilities/cookiesData.php';
 
-                    $cookiesData = getCookiesData();
+                    $cookiesData = getCookies();
                     $auth = (boolean)$cookiesData[0];
 
                     $db = new DB();
@@ -83,7 +83,7 @@
                             }
 
                             echo <<<STR
-                                        <a href="/copixel?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
+                                        <a href="/?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
                                             <div class="image-overlay">
                                     
                                                 <div class="mx-3">

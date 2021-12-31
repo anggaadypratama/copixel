@@ -1,9 +1,8 @@
 <?php
-    include '/utilities/cookiesData.php';
-    include '/utilities/db.php';
+    include_once 'utilities/cookiesData.php';
 
-    $cookiesData = getCookiesData();
-    $auth = (boolean)$cookiesData[0];
+    $cookiesData = getCookies();
+    $auth = isset($cookiesData) ? (boolean)$cookiesData[0] : false;
 
     $db = new DB();
 
@@ -17,9 +16,9 @@
         Post.views,
         Users.name,
         Users.img_profile
-    SQL;
+SQL;
 
-    $search = $_GET['search'];
+    $search = isset($_GET['search']) ? $_GET['search'] : '';
 
     $conditionalMessage = isset($search) && !empty($search) ?
                             "Berikut hasil pencarian dari <br>'<span>$search</span>'" :
@@ -32,13 +31,13 @@
             WHERE Post.title
             LIKE "%$search%"
             ORDER BY Post.created_time DESC
-        STR;
+STR;
     }else{
         $Join = <<<SQL
             INNER JOIN Users
             ON Post.id_users = Users.id_users
             ORDER BY Post.created_time DESC
-        SQL;
+SQL;
     }
 
     $db->select('Post',$from, $Join);
@@ -55,11 +54,11 @@
                             <p>Temukan Gambar Dan Bagikan Gambarmu Disini</p>
                             <a href="?p=auth&s=register" class="btn btn-primary px-5 py-3 mt-4">Daftar</a>
                         </div>
-                        <img src="image/people.png" alt="orang">
+                        <img src="image/people.webp" alt="orang">
                     </div>
                 </div>
             </div>
-        STR;
+STR;
     }else{
         echo <<<STR
         <div class="container mt-4">
@@ -67,7 +66,7 @@
                 <div class="text-center mt-5 mb-5 conditional-message home">$conditionalMessage</div>
             </div>
         </div>
-    STR;
+STR;
     }?>
 
     <div class="content">
@@ -98,7 +97,7 @@
                             echo <<<STR
                             <div class="col-lg-4 col-xl-3 col-12 col-md-6 my-2 mb-4">
                                 <div class="card">
-                                    <a href="/copixel?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
+                                    <a href="/?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
                                         <div class="image-overlay">
                                             <div class="mx-3">
                                                 <p>{$row['title']}</p>
@@ -127,7 +126,7 @@
                                     </div>
                                 </div>
                             </div>
-                            STR;
+STR;
                         }
                     ?>
 

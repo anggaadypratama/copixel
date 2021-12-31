@@ -1,7 +1,7 @@
 <?php
     include '../utilities/cookiesData.php';
 
-    $cookiesData = getCookiesData();
+    $cookiesData = getCookies();
 
     $pid = $_POST['pid'];
     $comment = $_POST['comment'];

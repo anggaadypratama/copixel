@@ -1,10 +1,11 @@
 <?php
-    include 'utilities/cookiesData.php';
+    include_once 'utilities/cookiesData.php';
 
-    $cookiesData = getCookiesData();
-    $auth = (boolean)$cookiesData[0];
+    $cookiesData = getCookies();
+    $auth = isset($cookiesData) ? (boolean)$cookiesData[0] : false;
+    $id = isset($cookiesData) ? $cookiesData[1] : 0;
 
-    $db->select('Users','img_profile',"WHERE id_users='{$cookiesData[1]}'");
+    $db->select('Users','img_profile',"WHERE id_users='{$id}'");
     $res = $db->sql;
     $resVal = $res->fetch_assoc();
 ?>
@@ -17,7 +18,7 @@
                 Copixel
             </a>
         </div>
-        <?php if($auth && cookiesData[1]){ ?>
+        <?php if($auth && $id){ ?>
         <form action="?search=udin">
             <div class="search-wrapper">
                 <input type="search" name="search" placeholder="Cari gambar...">
@@ -44,12 +45,12 @@
                         <li><a class="dropdown-item" href="process/logout.php">Keluar</a></li>
                     </ul>
                 </div>
-            STR;
+STR;
         }else{
             echo <<<STR
                 <a href="?p=auth&s=login" class="btn btn-upload px-3 py-2">Login</a>
                 <a href="?p=auth&s=register" class="btn btn-primary px-3 py-2">Register</a>
-            STR;
+STR;
         }
 
         ?>

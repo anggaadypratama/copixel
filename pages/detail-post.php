@@ -1,7 +1,7 @@
 <?php
-    include '/utilities/cookiesData.php';
+    include_once 'utilities/cookiesData.php';
 
-    $cookiesData = getCookiesData();
+    $cookiesData = getCookies();
     $auth = (boolean)$cookiesData[0];
     
     $pid = $_GET['pid'];
@@ -34,7 +34,7 @@
     }
 
     $postVal = getData($db,'Post', $postSelect, $postJoin);
-    $userVal = $auth && cookiesData[1] ? getData($db, 'Users', '*', "WHERE id_users = $cookiesData[1]"): null;
+    $userVal = $auth && $cookiesData[1] ? getData($db, 'Users', '*', "WHERE id_users = $cookiesData[1]"): null;
 
     $views = (int)$postVal['views'] += 1;
 
@@ -66,7 +66,7 @@
                     </div>
 
                 </div>
-                <?php if($auth && cookiesData[1]){ ?>
+                <?php if($auth && $cookiesData[1]){ ?>
                 <div class="content__comment-section">
                     <div class="input-comment">
                         <img src="<?= $userVal ? $userVal['img_profile'] : ''?>" class="input-comment__img " alt="">

@@ -1,7 +1,7 @@
 <?php
-    include '/utilities/db.php';
+    include_once 'utilities/cookiesData.php';
 
-    $cookiesData = getCookiesData();
+    $cookiesData = getCookies();
     $auth = (boolean)$cookiesData[0];
 
     $db = new DB();
@@ -13,7 +13,7 @@
     $resVal = $res->fetch_assoc();
 ?>
 
-<form method="post" enctype="multipart/form-data" action="process/edit-profile.php" class="edit-profile-form">
+<form method="post" enctype="multipart/form-data" id="edit-profile-form" class="edit-profile-form">
     <div class="image-profile">
         <label for="img-profile">
             <img src="<?= $resVal['img_profile']?>" id="profile-img" alt="img-profile">

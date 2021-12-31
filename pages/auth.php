@@ -1,11 +1,14 @@
 <?php
     include 'utilities/cookiesData.php';
 
-    $cookiesData = getCookiesData();
-    $auth = (boolean)$cookiesData[0];
+    $cookiesData = getCookies();
+    $auth = isset($cookiesData) ? (boolean)$cookiesData[0] : false;
 
-    if(isset($_COOKIE['token']) && auth) {
-        header('location: /copixel');
+    if(isset($_COOKIE['token']) && $auth) {
+                echo "<script type=\"text/javascript\">
+        window.location.replace('/')
+        </script>";
+        
     }
 
     $pages = !empty($_GET['s']) ?

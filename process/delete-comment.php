@@ -6,5 +6,7 @@
     
     $db->delete('Comment',"id_comment='$cid'");
 
-    header("location: /copixel?p=detail-post&pid=$pid");
+    echo "<script type=\"text/javascript\">
+        window.location.replace('/?p=detail-post&pid=$pid')
+        </script>";
     

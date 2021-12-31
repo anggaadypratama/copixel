@@ -13,5 +13,7 @@
     $db->delete('Comment',"id_post='$pid'");
     $db->delete('Post',"id_post='$pid'");
     
-
-    header("location: /copixel?p=profile&uid=$uid");
+    
+    echo "<script type=\"text/javascript\">
+        window.location.replace('/?p=profile&uid=$uid')
+        </script>";

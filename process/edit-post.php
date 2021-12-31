@@ -1,17 +1,18 @@
 <?php
 
-    include '../utilities/cookiesData.php';
+    include_once '../utilities/cookiesData.php';
 
-    $cookiesData = getCookiesData();
+    $cookiesData = getCookies();
     $auth = (boolean)$cookiesData[0];
 
+    header('Content-Type: application/json; charset=utf-8');
+
         if($_SERVER['REQUEST_METHOD'] == "POST"){
-            if(isset($_POST['submit'])){
                 $pid = $_POST['pid'];
                 $title = $_POST['title'];
                 $desc = $_POST['desc'];
 
-                if(strlen($_FILES['image-edit']['name']) === 0){
+                if(empty($_FILES) || !isset($_FILES['image-form-edit'])){
                     $db->select('Post','img_post',"WHERE id_post='$pid'");
                     $res = $db->sql;
                     $resVal = $res->fetch_assoc();
@@ -22,9 +23,10 @@
                         'description' => $desc,
                         'img_post' => $imgLink,
                     ], "id_post='$pid'");
-    
-                    var_dump($res);
-                    header("location: ../?p=detail-post&pid=$pid");
+
+                    echo json_encode(["status" => true, 'uid' => $cookiesData[1]]);
+   
+                    // header("location: ../?p=detail-post&pid=$pid");
                 }else{
                     $db->select('Post','img_post',"WHERE id_post='$pid'");
                     $res = $db->sql;
@@ -32,17 +34,19 @@
                     unlink("../{$resVal['img_post']}");
     
                     $target_dir = "image/post/";
-                    $img = $target_dir.basename($_FILES['image-edit']['name']);
-                    move_uploaded_file($_FILES['image-edit']['tmp_name'], "../$img");
+                    $img = $target_dir.basename(time()."_".$_FILES['image-form-edit']['name']);
+                    move_uploaded_file($_FILES['image-form-edit']['tmp_name'], "../$img");
     
                     $res = $db->update('Post',[
                         'title' => $title,
                         'description' => $desc,
                         'img_post' => $img,
                     ], "id_post='$pid'");
+
+                    echo json_encode(["status" => true, 'uid' => $cookiesData[1]]);
     
-                        header("location: ../?p=detail-post&pid=$pid");
+                        // header("location: ../?p=detail-post&pid=$pid");
     
                 }
-            }
+            
         }

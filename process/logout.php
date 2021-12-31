@@ -1,4 +1,7 @@
 <?php
 
 setcookie('token','',time() - 3600,'/');
-header('location: /copixel');
+        echo "<script type=\"text/javascript\">
+        window.location.replace('/')
+        </script>";
+exit();

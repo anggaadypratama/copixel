@@ -1,17 +1,19 @@
 <?php
-    include '/utilities/cookiesData.php';
+    include_once 'utilities/cookiesData.php';
 
-    $cookiesData = getCookiesData();
+    $cookiesData = getCookies();
     $auth = (boolean)$cookiesData[0];
 
-    if(!isset($_COOKIE['token']) || !auth) {
-        header('location: /copixel');
+    if(!isset($_COOKIE['token']) || !$auth) {
+        echo "<script type=\"text/javascript\">
+        window.location.replace('/')
+        </script>";
     }
 ?>
 
 <div class="upload">
     <div class="container upload__wrapper">
-        <form method="post" enctype="multipart/form-data" action="process/upload.php">
+        <form method="post" id="submit-upload">
             <div class="action-button d-flex justify-content-between  mt-4 mb-4">
                 <a class="btn btn-outline-secondary px-4 py-2" href="/copixel">Batal</a>
                 <button type="button" class="btn btn-primary px-4 py-2" id="button-next-upload" data-bs-toggle="modal"
@@ -38,7 +40,7 @@
                                 </div>
                             </div>
                         </label>
-                        <input type="file" class="d-none" name="image-upload" id="input-image-upload" required>
+                        <input type="file" class="d-none invisible" name="image-form-upload" id="input-image-upload">
                     </div>
                     <div class="desc mt-5">
                         <textarea placeholder="Tulis apapun disini yang berkaitan dengan gambar mu"
@@ -71,15 +73,18 @@
 </div>
 
 <div class="modal fade" id="modal-upload-alert" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    aria-labelledby="modal-title" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Error</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title" id="modal-title"></h5>
+                <button type="button" class="btn-close btn-post" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <p id="modal-error-upload-message"></p>
+            </div>
+            <div class="modal-footer" id="modal-confirm-footer">
+
             </div>
 
         </div>
