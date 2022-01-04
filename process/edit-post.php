@@ -17,7 +17,7 @@
                     $res = $db->sql;
                     $resVal = $res->fetch_assoc();
                     $imgLink = $resVal['img_post'];
-                    
+
                     $res = $db->update('Post',[
                         'title' => $title,
                         'description' => $desc,

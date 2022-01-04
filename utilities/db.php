@@ -2,9 +2,9 @@
     class DB{
         public $que;
         private $servername='localhost';
-        private $username='id18153197_db_copixel';
-        private $password='POBPn1!IybEeIP{9';
-        private $dbname='id18153197_copixel';
+        private $username='root';
+        private $password='root';
+        private $dbname='db_copixel';
         private $result=array();
         private $mysqli='';
 
@@ -21,7 +21,6 @@
         }
 
         public function insert($table,$para=array()){
-
             $table_columns = implode(',', array_keys($para));
             $table_value = implode("','", $para);
 

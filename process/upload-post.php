@@ -6,8 +6,7 @@
     $auth = (boolean)$cookiesData[0];
 
     header('Content-Type: application/json; charset=utf-8');
-    
-    
+
         if($_SERVER['REQUEST_METHOD'] == "POST"){
                 $target_dir = "image/post/";
 
@@ -37,5 +36,4 @@
                 }else{
                     echo json_encode(['status' => false]);
                 }
-            
         }
