@@ -46,6 +46,8 @@
                                     <div class="card">
                             STR;
 
+                            $img = base64_encode($row['img_post']);
+
                             if($auth && $uid === $cookiesData[1]){
                                 $titleModal = $row['title'];
                                 $idModal = $row['id_post'];
@@ -90,7 +92,7 @@
                                                     <p>{$row['title']}</p>
                                                 </div>
                                             </div>
-                                            <img class="image-card" loading=”lazy” src="{$row['img_post']}" alt="">
+                                            <img class="image-card" loading=”lazy” src="data:image/webp;base64,$img" alt="">
                                         </a>
                                     </div>
                                 </div>

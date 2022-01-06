@@ -32,11 +32,14 @@
     while($row = $res->fetch_assoc()){
         $idComment = $row['id_comment'];
 
+        $imgProfile = base64_encode($row['img_profile']);
+
+
         $date = date('H:i ~ d M Y', strtotime($row['timestamp']));
 
         echo <<<STR
             <div class="comment-section">
-                <img class="comment-section__img" src="{$row['img_profile']}" loading="lazy" alt="{$row['name']}">
+                <img class="comment-section__img" src="data:image/webp;base64,$imgProfile" loading="lazy" alt="{$row['name']}">
                 <div class="comment-section__body">
                     <div class="comment-header">
                         <a href="?p=profile&uid={$row['id_users']}">{$row['name']}</a>

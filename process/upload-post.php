@@ -8,14 +8,16 @@
     header('Content-Type: application/json; charset=utf-8');
 
         if($_SERVER['REQUEST_METHOD'] == "POST"){
-                $target_dir = "image/post/";
+                // $target_dir = "image/post/";
 
                 $id_post = rand(1,1000000000);
                 $title = $_POST['title'];
                 $desc = $_POST['desc'];
-                $img = $target_dir.basename(time()."_".$_FILES['image-form-upload']['name']);
+                // $img = $target_dir.basename(time()."_".$_FILES['image-form-upload']['name']);
 
-                move_uploaded_file($_FILES['image-form-upload']['tmp_name'], "../$img");
+                // move_uploaded_file($_FILES['image-form-upload']['tmp_name'], "../$img");
+
+                $img = addslashes(file_get_contents($_FILES['image-form-upload']['tmp_name']));
 
                 $res = $db->insert('Post',[
                     'id_post' => $id_post,

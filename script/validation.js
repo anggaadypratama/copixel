@@ -1,5 +1,8 @@
 import { createAvatar } from 'https://cdn.skypack.dev/@dicebear/avatars';
 import * as style from 'https://cdn.skypack.dev/@dicebear/micah';
+import Resizer from 'https://cdn.skypack.dev/react-image-file-resizer';
+import { svgToPngBase64 } from 'https://cdn.skypack.dev/svg-to-png-browser';
+
 
 let svg = createAvatar(style,{
     flip: true,
@@ -7,6 +10,36 @@ let svg = createAvatar(style,{
     scale: 90,
     translateY: 5
 });
+
+const imageCompression = (imageFile) => new Promise((resolve) => {
+  Resizer.imageFileResizer(
+      imageFile,
+      500,
+      500,
+      "webp",
+      50,
+      0,
+      (uri) => {
+        resolve(uri);
+      },
+      "file"
+  );
+})
+
+function dataURLtoFile(dataurl, filename) {
+ 
+  var arr = dataurl.split(','),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]), 
+      n = bstr.length, 
+      u8arr = new Uint8Array(n);
+      
+  while(n--){
+      u8arr[n] = bstr.charCodeAt(n);
+  }
+  
+  return new File([u8arr], filename, {type:mime});
+}
 
 const form = document.forms['auth']
 const authAlert = document.getElementById('auth-alert');
@@ -34,17 +67,21 @@ const request = async (url, init, cb) => {
   cb(data)
 }
 
-form.addEventListener('submit', (e) => {
+form.addEventListener('submit', async (e) => {
   e.preventDefault()
 
-  console.log(`${btoa(svg)}`)
+  const pngBase64 = await svgToPngBase64(svg);
+  const imageFile = dataURLtoFile(pngBase64, 'profile-image.png')
+  const image = await imageCompression(imageFile)
+
+  console.log(image)
 
   const formData = new FormData()
   for(let row of form){
     formData.append(row.name, row.value)
   }
 
-  formData.append('img-url', `${btoa(svg)}`)
+  formData.append('img-url', image, 'profile-image.webp')
 
   request(`process/${sectionParams}.php`,{
     method: 'POST',

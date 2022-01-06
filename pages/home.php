@@ -94,6 +94,10 @@ STR;
                 <?php
                         while($row = $res->fetch_assoc()){
                             $name = ucwords($row['name']);
+
+                            $imgPost = base64_encode($row['img_post']);
+                            $imgProfile = base64_encode($row['img_profile']);
+                            
                             echo <<<STR
                             <div class="col-lg-4 col-xl-3 col-12 col-md-6 my-2 mb-4">
                                 <div class="card">
@@ -103,13 +107,13 @@ STR;
                                                 <p>{$row['title']}</p>
                                             </div>
                                         </div>
-                                        <img class="image-card" loading=”lazy” src="{$row['img_post']}" alt="">
+                                        <img class="image-card" loading=”lazy” src="data:image/webp;base64,$imgPost" alt="">
                                     </a>
                                     <div class="post-info mt-3">
                                         <a href="/copixel?p=profile&uid={$row['id_users']}" class="account">
                                             <img
                                                 loading=”lazy”
-                                                src="{$row['img_profile']}" 
+                                                src="data:image/webp;base64,$imgProfile" 
                                                 alt=""
                                                 height="24"
                                                 width="24"

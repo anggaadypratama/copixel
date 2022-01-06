@@ -6,22 +6,14 @@
 
 
     if($_SERVER['REQUEST_METHOD'] == "POST"){
-            $target_dir = "image/profile/";
-
             $name = $_POST['name'];
             $email = $_POST['email'];
             $password = $_POST['password'];
             $r_password = $_POST['r_password'];
-            $imgUrl = $_POST['img-url']; 
-
-            $nameOfImage = time()."_$name";
-
-            $fp = fopen("../$target_dir"."$nameOfImage.svg","w+");
-            fwrite($fp, base64_decode($imgUrl));
+            $img = addslashes(file_get_contents($_FILES['img-url']['tmp_name'])); 
 
             $db->select('Users','*',"WHERE email='$email'");
             $res = $db->sql;
-            $resVal = $res->fetch_assoc();
 
             if($res->num_rows === 0){
                 if($password === $r_password){
@@ -30,7 +22,7 @@
                         'name' => ucwords($name),
                         'email' => $email,
                         'password' => password_hash($password, PASSWORD_DEFAULT),
-                        'img_profile' => "$target_dir$nameOfImage.svg"
+                        'img_profile' => $img
                     ]);
     
                     if($res === true){
