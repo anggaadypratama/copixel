@@ -83,7 +83,7 @@
                             }
 
                             echo <<<STR
-                                        <a href="/?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
+                                        <a href="/copixel?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
                                             <div class="image-overlay">
                                     
                                                 <div class="mx-3">

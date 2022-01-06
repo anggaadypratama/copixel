@@ -32,7 +32,7 @@
                 if($res === true){
                     echo json_encode(['status' => true, 'uid' => $cookiesData[1]]);
 
-                    // header("location: ../?p=profile&uid=$cookiesData[1]");
+                    // header("location: ../copixel?p=profile&uid=$cookiesData[1]");
                 }else{
                     echo json_encode(['status' => false]);
                 }

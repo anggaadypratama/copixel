@@ -26,7 +26,7 @@
 
                     echo json_encode(["status" => true, 'uid' => $cookiesData[1]]);
    
-                    // header("location: ../?p=detail-post&pid=$pid");
+                    // header("location: ../copixel?p=detail-post&pid=$pid");
                 }else{
                     $db->select('Post','img_post',"WHERE id_post='$pid'");
                     $res = $db->sql;
@@ -45,7 +45,7 @@
 
                     echo json_encode(["status" => true, 'uid' => $cookiesData[1]]);
     
-                        // header("location: ../?p=detail-post&pid=$pid");
+                        // header("location: ../copixel?p=detail-post&pid=$pid");
     
                 }
             

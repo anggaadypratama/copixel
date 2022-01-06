@@ -97,7 +97,7 @@ STR;
                             echo <<<STR
                             <div class="col-lg-4 col-xl-3 col-12 col-md-6 my-2 mb-4">
                                 <div class="card">
-                                    <a href="/?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
+                                    <a href="/copixel?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
                                         <div class="image-overlay">
                                             <div class="mx-3">
                                                 <p>{$row['title']}</p>
