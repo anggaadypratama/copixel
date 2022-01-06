@@ -13,30 +13,13 @@
                 $desc = $_POST['desc'];
 
                 if(empty($_FILES) || !isset($_FILES['image-form-edit'])){
-                    $db->select('Post','img_post',"WHERE id_post='$pid'");
-                    $res = $db->sql;
-                    $resVal = $res->fetch_assoc();
-                    $imgLink = $resVal['img_post'];
-
                     $res = $db->update('Post',[
                         'title' => $title,
                         'description' => $desc,
-                        'img_post' => $imgLink,
                     ], "id_post='$pid'");
 
-                    echo json_encode(["status" => true, 'uid' => $cookiesData[1]]);
-   
-                    // header("location: ../copixel?p=detail-post&pid=$pid");
+                    echo json_encode(["status" => true, 'uid' => $cookiesData[1], 'res' => $res]);
                 }else{
-                    // $db->select('Post','img_post',"WHERE id_post='$pid'");
-                    // $res = $db->sql;
-                    // $resVal = $res->fetch_assoc();
-                    // unlink("../{$resVal['img_post']}");
-    
-                    // $target_dir = "image/post/";
-                    // $img = $target_dir.basename(time()."_".$_FILES['image-form-edit']['name']);
-                    // move_uploaded_file($_FILES['image-form-edit']['tmp_name'], "../$img");
-
                     $img = addslashes(file_get_contents($_FILES['image-form-edit']['tmp_name']));
     
                     $res = $db->update('Post',[
@@ -46,9 +29,6 @@
                     ], "id_post='$pid'");
 
                     echo json_encode(["status" => true, 'uid' => $cookiesData[1]]);
-    
-                        // header("location: ../copixel?p=detail-post&pid=$pid");
-    
                 }
             
         }

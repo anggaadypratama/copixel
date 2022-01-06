@@ -11,15 +11,9 @@
             $about = $_POST['about'];
 
             if(empty($_FILES) || !isset($_FILES['img-profile'])){
-                $db->select('Users','img_profile',"WHERE id_users='$cookiesData[1]'");
-                $res = $db->sql;
-                $resVal = $res->fetch_assoc();
-                $imgLink = $resVal['img_profile'];
-
                 $res = $db->update('Users',[
                     'name' => $name,
                     'about' => $about,
-                    'img_profile' => $imgLink,
                 ], "id_users = '$cookiesData[1]'");
 
                 echo json_encode(['status' => true, 'name' => "tanpa gambar"]);
