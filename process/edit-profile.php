@@ -24,14 +24,7 @@
 
                 echo json_encode(['status' => true, 'name' => "tanpa gambar"]);
             }else{
-                $db->select('Users',"img_profile","WHERE id_users='$cookiesData[1]'");
-                $res = $db->sql;
-                $resVal = $res->fetch_assoc();
-                unlink("../{$resVal['img_profile']}");
-
-                $target_dir = "image/profile/";
-                $img = $target_dir.basename(time()."_".$_FILES['img-profile']['name']);
-                move_uploaded_file($_FILES['img-profile']['tmp_name'], "../$img");
+                $img = addslashes(file_get_contents($_FILES['img-profile']['tmp_name']));
 
                 $res = $db->update('Users',[
                     'name' => $name,
@@ -39,7 +32,7 @@
                     'img_profile' => $img,
                 ], "id_users = '$cookiesData[1]'");
 
-                    echo json_encode(['status' => true, 'name' => $_FILES['img-profile']['name']]);
+                    echo json_encode(['status' => true, 'name' => $_FILES['img-profile']['tmp_name']]);
 
             }
 

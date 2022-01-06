@@ -58,7 +58,7 @@ const putProfile = () => {
             50,
             0,
             (uri) => {
-              resolve(uri);
+                resolve(uri);
             },
             "file"
         );
@@ -72,8 +72,6 @@ const putProfile = () => {
 
         editProfileForm.addEventListener('submit',async (e)=>{
             e.preventDefault()
-            
-            console.log('ea')
 
             const image = file && await imageCompression(file)
 

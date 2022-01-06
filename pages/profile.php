@@ -46,6 +46,8 @@
                                     <div class="card">
                             STR;
 
+                            $img = base64_encode($row['img_post']);
+
                             if($auth && $uid === $cookiesData[1]){
                                 $titleModal = $row['title'];
                                 $idModal = $row['id_post'];
@@ -83,14 +85,14 @@
                             }
 
                             echo <<<STR
-                                        <a href="/?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
+                                        <a href="/copixel?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
                                             <div class="image-overlay">
                                     
                                                 <div class="mx-3">
                                                     <p>{$row['title']}</p>
                                                 </div>
                                             </div>
-                                            <img class="image-card" loading=”lazy” src="{$row['img_post']}" alt="">
+                                            <img class="image-card" loading=”lazy” src="data:image/webp;base64,$img" alt="">
                                         </a>
                                     </div>
                                 </div>

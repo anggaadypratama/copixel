@@ -41,12 +41,16 @@
     $db->update('Post',['views' => $views], "id_post=$pid");
 
     $date = explode(' ', $postVal['created_time']);
+
+    $imgPost = base64_encode($postVal['img_post']);
+    $imgProfile = base64_encode($postVal['img_profile']);
+
 ?>
 
 <div class="detail-post container">
     <div class="row detail-post__wrapper">
         <div class="col-lg-7 col-12 px-2 px-lg-5">
-            <img class="image-post" src="<?= $postVal['img_post'] ?>" alt="image-post">
+            <img class="image-post" src='<?=  "data:image/webp;base64,$imgPost"  ?>' alt="image-post">
         </div>
         <div class="col-lg-5 col-12">
             <div class="content ">
@@ -56,7 +60,8 @@
                 </div>
                 <div class="content__bottom border-bottom mt-4 mb-4">
                     <a href="/copixel?p=profile&uid=<?= $postVal['id_users']?>" class="profile">
-                        <img class="profile__image" src="<?= $postVal['img_profile']?>" alt="image-profile">
+                        <img class="profile__image" src='<?=  "data:image/webp;base64,$imgProfile" ?>'
+                            alt="image-profile">
                         <span class="profile__name">
                             <?= ucwords($postVal['name'])?>
                         </span>
@@ -69,7 +74,8 @@
                 <?php if($auth && $cookiesData[1]){ ?>
                 <div class="content__comment-section">
                     <div class="input-comment">
-                        <img src="<?= $userVal ? $userVal['img_profile'] : ''?>" class="input-comment__img " alt="">
+                        <img src='<?= $userVal ? "data:image/webp;base64,$imgProfile" : ''?>'
+                            class="input-comment__img " alt="">
                         <form action="process/comment.php" method="post" class="input-comment__wrapper">
                             <input type="hidden" name="uid" value="<?= $cookiesData[1] ?>">
                             <input type="hidden" name="pid" value="<?= $pid ?>">

@@ -14,6 +14,9 @@
     $db->select('Post','*',"WHERE id_post=$pid");
     $res = $db->sql;
     $resVal = $res->fetch_assoc();
+
+    $imgPost = base64_encode($resVal['img_post']);
+
 ?>
 
 <div class="upload">
@@ -37,8 +40,8 @@
                     <div class="drag-area">
                         <label for="input-image-edit" class="input-area" id="input-edit-area">
                             <div class="image-wrapper-ue">
-                                <img src="<?= $resVal['img_post'] ?>" class="image-wrapper-ue__img" id="display-image"
-                                    alt="image">
+                                <img src='<?= "data:image/webp;base64,$imgPost" ?>' class="image-wrapper-ue__img"
+                                    id="display-image" alt="image">
                                 <div class="image-wrapper-ue__overlay" id="img-edit-overlay">
                                     <div class="information-wrapper">
                                         <i class="fas fa-image"></i>
