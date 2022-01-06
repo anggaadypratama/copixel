@@ -47,6 +47,13 @@
             $sql .=" WHERE $id";
 
             $result = $this->mysqli->query($sql);
+
+
+            if(!$result){
+                return ("Error description: " . $this -> mysqli -> error);
+            }else{
+                return $result;
+            }
         }
 
         public function delete($table,$id){

@@ -175,7 +175,6 @@ function Post(values, status){
         e.preventDefault()
 
         const image = file && await imageCompression(file)
-        console.log(image)
 
         const formData = new FormData()
         formData.append('title', inputTitle[0].value)
