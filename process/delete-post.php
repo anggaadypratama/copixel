@@ -15,5 +15,5 @@
     
     
     echo "<script type=\"text/javascript\">
-        window.location.replace('/copixel?p=profile&uid=$uid')
+        window.location.replace('/?p=profile&uid=$uid')
         </script>";

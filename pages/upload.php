@@ -15,7 +15,7 @@
     <div class="container upload__wrapper">
         <form method="post" id="submit-upload">
             <div class="action-button d-flex justify-content-between  mt-4 mb-4">
-                <a class="btn btn-outline-secondary px-4 py-2" href="/copixel">Batal</a>
+                <a class="btn btn-outline-secondary px-4 py-2" href="/">Batal</a>
                 <button type="button" class="btn btn-primary px-4 py-2" id="button-next-upload" data-bs-toggle="modal"
                     data-bs-target="#inputTags" disabled>
                     Lanjut

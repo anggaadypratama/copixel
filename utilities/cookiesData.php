@@ -18,7 +18,7 @@
 
             if($res->num_rows === 0){
                 setcookie('tokenSession','',time() - 3600,'/');
-                header('location: /copixel');
+                header('location: /');
             }else{
                 return $data;
             }

@@ -45,7 +45,7 @@
                     </button>
                     <input class="btn rounded btn-primary btn-sm mx-2 submit-profile disabled" id="edit-btn-submit" name="submit" type="submit" value="Simpan">
                 </div>
-            STR;
+STR;
         }
         ?>
 

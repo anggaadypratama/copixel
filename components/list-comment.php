@@ -13,13 +13,13 @@
                 Users.id_users,
                 Users.name,
                 Users.img_profile
-        SQL;
+SQL;
 
         $commentJoin = <<<SQL
             INNER JOIN Users ON Comment.id_users = Users.id_users 
             WHERE Comment.id_post = $pid
             ORDER BY Comment.timestamp DESC
-        SQL;
+SQL;
 
         $db->select('Comment',$commentFrom, $commentJoin);
         $res = $db->sql;
@@ -44,7 +44,7 @@
                     <div class="comment-header">
                         <a href="?p=profile&uid={$row['id_users']}">{$row['name']}</a>
 
-        STR;
+STR;
 
         echo ($row['id_users'] === $cookiesData[1]) ? 
             <<<STR
@@ -88,7 +88,7 @@
                     <p class="comment-date">{$date}</p>
                 </div>
             </div>
-        STR;
+STR;
 
         $i++;
     } ?>

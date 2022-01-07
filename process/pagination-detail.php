@@ -20,7 +20,7 @@
             Post.id_users,
             Users.name,
             Users.img_profile
-    SQL;
+SQL;
 
     $opt = <<<SQL
         INNER JOIN Users
@@ -28,7 +28,7 @@
         WHERE Post.id_users = $uid
         ORDER BY Post.created_time DESC
         LIMIT $offset, $dataPerPage
-    SQL;
+SQL;
     
     $db->select('Post',$from,$opt);
     $res = $db->sql;
@@ -81,7 +81,7 @@ STR;
             }
 
             $header .= <<<STR
-                        <a href="/copixel?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
+                        <a href="/?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
                             <div class="image-overlay">
                     
                                 <div class="mx-3">

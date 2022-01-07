@@ -51,7 +51,7 @@
                             $header = <<<STR
                                 <div class="col-lg-4 col-xl-3 col-12 col-md-6 my-2 mb-3">
                                     <div class="card">
-                            STR;
+STR;
 
                             $img = base64_encode($row['img_post']);
 
@@ -88,11 +88,11 @@
                                             </div>
                                         </div>
                                     </div>
-                                STR;
+STR;
                             }
 
                             $header .= <<<STR
-                                        <a href="/copixel?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
+                                        <a href="/?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
                                             <div class="image-overlay">
                                     
                                                 <div class="mx-3">
@@ -103,7 +103,7 @@
                                         </a>
                                     </div>
                                 </div>
-                            STR;
+STR;
 
                             echo $header;
 
