@@ -88,7 +88,7 @@ STR;
                                     <p>{$row['title']}</p>
                                 </div>
                             </div>
-                            <img class="image-card" loading=”lazy” src="data:image/webp;base64,$img" alt="">
+                            <img loading="lazy" class="image-card" loading=”lazy” src="data:image/webp;base64,$img" alt="">
                         </a>
                     </div>
                 </div>

@@ -56,7 +56,7 @@ SQL;
                             <p>Temukan Gambar Dan Bagikan Gambarmu Disini</p>
                             <a href="?p=auth&s=register" class="btn btn-primary px-5 py-3 mt-4">Daftar</a>
                         </div>
-                        <img src="image/people.webp" alt="orang">
+                        <img loading="lazy" src="image/people.webp" alt="orang">
                     </div>
                 </div>
             </div>
@@ -110,11 +110,11 @@ STR;
                                                 <p>{$row['title']}</p>
                                             </div>
                                         </div>
-                                        <img class="image-card" loading=”lazy” src="data:image/webp;base64,$imgPost" alt="">
+                                        <img loading="lazy" class="image-card" loading=”lazy” src="data:image/webp;base64,$imgPost" alt="">
                                     </a>
                                     <div class="post-info mt-3">
                                         <a href="/copixel?p=profile&uid={$row['id_users']}" class="account">
-                                            <img
+                                            <img loading="lazy"
                                                 loading=”lazy”
                                                 src="data:image/webp;base64,$imgProfile" 
                                                 alt=""
@@ -137,6 +137,9 @@ STR;
                         }
                     ?>
 
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="loader"></div>
             </div>
         </div>
     </div>

@@ -47,11 +47,11 @@ SQL;
                             <p>{$row['title']}</p>
                         </div>
                     </div>
-                    <img class="image-card" loading=”lazy” src="data:image/webp;base64,$imgPost" alt="">
+                    <img loading="lazy" class="image-card" loading=”lazy” src="data:image/webp;base64,$imgPost" alt="">
                 </a>
                 <div class="post-info mt-3">
                     <a href="/copixel?p=profile&uid={$row['id_users']}" class="account">
-                        <img
+                        <img loading="lazy"
                             loading=”lazy”
                             src="data:image/webp;base64,$imgProfile" 
                             alt=""

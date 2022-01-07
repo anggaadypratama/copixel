@@ -2,10 +2,12 @@ const pagination = () => {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   const listCard = document.querySelector('.list-card')
+  const loader = document.querySelector('.loader')
 
-  let i = 1
+  let pageNumber = 1
 
   const getParams = (params) => urlParams.get(params)
+
   const msnry = new Masonry(listCard, {
     percentPosition: true
   });
@@ -22,36 +24,35 @@ const pagination = () => {
     return dom;
   };
 
-  const infiniteScroll = (page, id = null) => {
-    window.addEventListener('scroll', () => {
-      if (
-        window.scrollY + window.innerHeight >= document.body.offsetHeight - 1000
-      ) {
-        getPost(page, id);
-      }
-    });
+  const getPost = (page, id) => {
+    var formData = new FormData();
+    formData.append('pages', pageNumber);
 
-    const getPost = (page, id) => {
-      var formData = new FormData();
-      formData.append('pages', i);
-  
-      request(`process/pagination-${page}.php${id == null ? '' : `?uid=${id}`}`, {
-          method: 'POST',
-          body: formData
-      },(res) => {
-  
+    request(`process/pagination-${page}.php${id == null ? '' : `?uid=${id}`}`, {
+        method: 'POST',
+        body: formData
+    },(res) => {
+        if(![null, undefined].includes(res)){
           const html = stringToHTML(res)
+          for(let el of Array.from(html.children)){
+            listCard?.append( el)
+            msnry?.appended(el)
+          }
 
+          loader.style.display = 'none'
+          msnry.layout()
+        }else{
+          loader.style.display = 'block'
+        }
+        
+    })
+    pageNumber++
+  }
 
-            for(let el of html.children){
-              listCard?.append( el)
-              msnry?.appended(el)
-            }
-    
-            msnry.layout()
-      })
-      ++i
-    }
+  const infiniteScroll = (page, id = null) => {
+    window.addEventListener('scroll', () => 
+      window.scrollY + window.innerHeight >= document.documentElement.scrollHeight && getPost(page, id)
+    );
   }
 
   for(var key of urlParams.keys()) {
@@ -64,4 +65,3 @@ const pagination = () => {
 }
 
 pagination()
-  
