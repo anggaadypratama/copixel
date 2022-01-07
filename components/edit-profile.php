@@ -20,7 +20,7 @@
 <form method="post" enctype="multipart/form-data" id="edit-profile-form" class="edit-profile-form">
     <div class="image-profile">
         <label for="img-profile">
-            <img src="<?= "data:image/webp;base64,$img"?>" id="profile-img" alt="img-profile">
+            <img loading="lazy" src="<?= "data:image/webp;base64,$img"?>" id="profile-img" alt="img-profile">
             <div class="overlay disabled" id="img-profile-overlay">
                 <i class="fas fa-user-edit"></i>
             </div>

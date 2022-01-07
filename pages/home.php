@@ -31,12 +31,14 @@ SQL;
             WHERE Post.title
             LIKE "%$search%"
             ORDER BY Post.created_time DESC
+            LIMIT 10
 STR;
     }else{
         $Join = <<<SQL
             INNER JOIN Users
             ON Post.id_users = Users.id_users
             ORDER BY Post.created_time DESC
+            LIMIT 10
 SQL;
     }
 
@@ -54,7 +56,7 @@ SQL;
                             <p>Temukan Gambar Dan Bagikan Gambarmu Disini</p>
                             <a href="?p=auth&s=register" class="btn btn-primary px-5 py-3 mt-4">Daftar</a>
                         </div>
-                        <img src="image/people.webp" alt="orang">
+                        <img loading="lazy" src="image/people.webp" alt="orang">
                     </div>
                 </div>
             </div>
@@ -70,26 +72,8 @@ STR;
     }?>
 
     <div class="content">
-        <!-- <ul class="tags-list mt-4">
-            <li>
-                <input type="radio" id="all" name="content_type" value="All" checked>
-                <label for="all">All</label>
-            </li>
-            <?php
-                // $tags = array( "Branding", "Illustration", "UI Design", "Typograhpy", "Mobile Design", "Web Design");
-
-                // foreach ($tags as $value) {
-                //     echo <<<STR
-                //         <li>
-                //             <input type="radio" id="$value" name="content_type" value="$value">
-                //             <label for="$value">$value</label>
-                //         </li>
-                //     STR;
-                // }
-            ?>
-        </ul> -->
         <div class="container-sm mt-4 mb-4">
-            <div class="row gx-4" data-masonry='{"percentPosition": true }'>
+            <div class="row gx-4 list-card" data-masonry='{"percentPosition": true }'>
 
                 <?php
                         while($row = $res->fetch_assoc()){
@@ -107,11 +91,11 @@ STR;
                                                 <p>{$row['title']}</p>
                                             </div>
                                         </div>
-                                        <img class="image-card" loading=”lazy” src="data:image/webp;base64,$imgPost" alt="">
+                                        <img loading="lazy" class="image-card" loading=”lazy” src="data:image/webp;base64,$imgPost" alt="">
                                     </a>
                                     <div class="post-info mt-3">
                                         <a href="/copixel?p=profile&uid={$row['id_users']}" class="account">
-                                            <img
+                                            <img loading="lazy"
                                                 loading=”lazy”
                                                 src="data:image/webp;base64,$imgProfile" 
                                                 alt=""
@@ -134,6 +118,15 @@ STR;
                         }
                     ?>
 
+            </div>
+            <div class="d-flex justify-content-center">
+                <div class="loader"></div>
+            </div>
+            <div class="auth-overlay">
+                <div class="auth-overlay__message">
+                    <h1>Daftar untuk bisa melihat lebih banyak unggahan</h1>
+                    <a href="?p=auth&s=register" class="btn btn-primary">Daftar</a>
+                </div>
             </div>
         </div>
     </div>

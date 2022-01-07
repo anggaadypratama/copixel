@@ -112,7 +112,7 @@ function Post(values, status){
     const upload = (fileURL) => {
         let imgTag = `
         <div class="image-wrapper-ue">
-            <img src="${fileURL}" class="image-wrapper-ue__img" alt="image">
+            <img loading="lazy" src="${fileURL}" class="image-wrapper-ue__img" alt="image">
             <div class="image-wrapper-ue__overlay">
                 <div class="information-wrapper">
                     <i class="fas fa-image"></i>

@@ -39,7 +39,7 @@
 
         echo <<<STR
             <div class="comment-section">
-                <img class="comment-section__img" src="data:image/webp;base64,$imgProfile" loading="lazy" alt="{$row['name']}">
+                <img loading="lazy" class="comment-section__img" src="data:image/webp;base64,$imgProfile" loading="lazy" alt="{$row['name']}">
                 <div class="comment-section__body">
                     <div class="comment-header">
                         <a href="?p=profile&uid={$row['id_users']}">{$row['name']}</a>
