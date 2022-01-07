@@ -4,7 +4,7 @@
             <?php include "components/edit-profile.php"; ?>
         </div>
         <div class="content mt-4">
-            <div class="row" data-masonry='{"percentPosition": true }'>
+            <div class="row list-card" data-masonry='{"percentPosition": true }'>
                 <?php
                     include_once 'utilities/cookiesData.php';
 
@@ -31,6 +31,7 @@
                         ON Post.id_users = Users.id_users
                         WHERE Post.id_users = $uid
                         ORDER BY Post.created_time DESC
+                        LIMIT 10
                     SQL;
                     
                     $db->select('Post',$from,$Join);
@@ -41,7 +42,7 @@
                     }else{
                         $i=0;
                         while($row = $res->fetch_assoc()){
-                            echo <<<STR
+                            $header = <<<STR
                                 <div class="col-lg-4 col-xl-3 col-12 col-md-6 my-2 mb-3">
                                     <div class="card">
                             STR;
@@ -53,6 +54,7 @@
                                 $idModal = $row['id_post'];
 
                                 echo <<<STR
+                                    $header
                                     <div class="image-option">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-detail" data-bs-toggle="dropdown" aria-expanded="false">

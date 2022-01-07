@@ -31,12 +31,14 @@ SQL;
             WHERE Post.title
             LIKE "%$search%"
             ORDER BY Post.created_time DESC
+            LIMIT 10
 STR;
     }else{
         $Join = <<<SQL
             INNER JOIN Users
             ON Post.id_users = Users.id_users
             ORDER BY Post.created_time DESC
+            LIMIT 10
 SQL;
     }
 
@@ -85,11 +87,12 @@ STR;
                 //             <label for="$value">$value</label>
                 //         </li>
                 //     STR;
+                // data-masonry='{"percentPosition": true }'
                 // }
             ?>
         </ul> -->
         <div class="container-sm mt-4 mb-4">
-            <div class="row gx-4" data-masonry='{"percentPosition": true }'>
+            <div class="row gx-4 list-card" data-masonry='{"percentPosition": true }'>
 
                 <?php
                         while($row = $res->fetch_assoc()){
