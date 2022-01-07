@@ -3,6 +3,9 @@ const pagination = () => {
   const urlParams = new URLSearchParams(queryString);
   const listCard = document.querySelector('.list-card')
   const loader = document.querySelector('.loader')
+  const authOverlay = document.querySelector('.auth-overlay')
+
+  const token = document.cookie.includes('token')
 
   let pageNumber = 1
 
@@ -50,15 +53,40 @@ const pagination = () => {
   }
 
   const infiniteScroll = (page, id = null) => {
-    window.addEventListener('scroll', () => 
-      window.scrollY + window.innerHeight >= document.documentElement.scrollHeight && getPost(page, id)
+    window.addEventListener('scroll', () => {
+      if(window.scrollY + window.innerHeight >= document.documentElement.scrollHeight){
+        if(token){
+          getPost(page, id)
+          authOverlay.style.opacity = 0
+        }else{
+          authOverlay.style.opacity = 1
+
+        }
+      }else{
+        authOverlay.style.opacity = 0
+      }
+
+      if(window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 100){
+        if(token){
+          authOverlay.style.display = 'none'
+        }else{
+          authOverlay.style.display = 'grid'
+        }
+      }else{
+        authOverlay.style.display = 'none'
+      }
+    }
     );
   }
 
+  const lastUrl = window.location.href.split('/').at(-1)
+
+  if(lastUrl?.length === 0 || lastUrl == '?search='){
+    infiniteScroll('home')
+  }
+
   for(var key of urlParams.keys()) {
-    if(key == 'search' || [undefined, null].includes(key)){
-      infiniteScroll('home')
-    }else if(key == 'p' && getParams('p') == 'profile' && getParams('uid').length > 0){
+    if(key == 'p' && getParams('p') == 'profile' && getParams('uid').length > 0){
       infiniteScroll('detail', getParams('uid'))
     }
   }

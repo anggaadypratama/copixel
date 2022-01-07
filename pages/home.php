@@ -72,25 +72,6 @@ STR;
     }?>
 
     <div class="content">
-        <!-- <ul class="tags-list mt-4">
-            <li>
-                <input type="radio" id="all" name="content_type" value="All" checked>
-                <label for="all">All</label>
-            </li>
-            <?php
-                // $tags = array( "Branding", "Illustration", "UI Design", "Typograhpy", "Mobile Design", "Web Design");
-
-                // foreach ($tags as $value) {
-                //     echo <<<STR
-                //         <li>
-                //             <input type="radio" id="$value" name="content_type" value="$value">
-                //             <label for="$value">$value</label>
-                //         </li>
-                //     STR;
-                // data-masonry='{"percentPosition": true }'
-                // }
-            ?>
-        </ul> -->
         <div class="container-sm mt-4 mb-4">
             <div class="row gx-4 list-card" data-masonry='{"percentPosition": true }'>
 
@@ -140,6 +121,12 @@ STR;
             </div>
             <div class="d-flex justify-content-center">
                 <div class="loader"></div>
+            </div>
+            <div class="auth-overlay">
+                <div class="auth-overlay__message">
+                    <h1>Daftar untuk bisa melihat lebih banyak unggahan</h1>
+                    <a href="?p=auth&s=register" class="btn btn-primary">Daftar</a>
+                </div>
             </div>
         </div>
     </div>

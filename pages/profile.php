@@ -1,3 +1,16 @@
+<?php
+    include_once 'utilities/cookiesData.php';
+
+    $cookiesData = getCookies();
+    $auth = isset($cookiesData) ? (boolean)$cookiesData[0] : false;
+
+    $db = new DB();
+                    
+    $uid = $_GET['uid'];
+
+?>
+
+
 <div class="profile">
     <div class="container-md">
         <div class="identity border-bottom">
@@ -6,14 +19,7 @@
         <div class="content mt-4">
             <div class="row list-card" data-masonry='{"percentPosition": true }'>
                 <?php
-                    include_once 'utilities/cookiesData.php';
 
-                    $cookiesData = getCookies();
-                    $auth = (boolean)$cookiesData[0];
-
-                    $db = new DB();
-                    
-                    $uid = $_GET['uid'];
 
                     $from = <<<SQL
                             Post.id_post,
@@ -53,8 +59,7 @@
                                 $titleModal = $row['title'];
                                 $idModal = $row['id_post'];
 
-                                echo <<<STR
-                                    $header
+                                $header .= <<<STR
                                     <div class="image-option">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-detail" data-bs-toggle="dropdown" aria-expanded="false">
@@ -86,7 +91,7 @@
                                 STR;
                             }
 
-                            echo <<<STR
+                            $header .= <<<STR
                                         <a href="/copixel?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
                                             <div class="image-overlay">
                                     
@@ -100,10 +105,18 @@
                                 </div>
                             STR;
 
+                            echo $header;
+
                             $i+=1;
                         }
                     }
                 ?>
+            </div>
+            <div class="auth-overlay">
+                <div class="auth-overlay__message">
+                    <h1>Daftar untuk bisa melihat lebih banyak unggahan</h1>
+                    <a href="?p=auth&s=register" class="btn btn-primary">Daftar</a>
+                </div>
             </div>
         </div>
     </div>
