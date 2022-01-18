@@ -7,6 +7,6 @@
     $db->delete('Comment',"id_comment='$cid'");
 
     echo "<script type=\"text/javascript\">
-        window.location.replace('/copixel?p=detail-post&pid=$pid')
+        window.location.replace('/?p=detail-post&pid=$pid')
         </script>";
     

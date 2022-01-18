@@ -1,19 +1,25 @@
+<?php
+    include_once 'utilities/cookiesData.php';
+
+    $cookiesData = getCookies();
+    $auth = isset($cookiesData) ? (boolean)$cookiesData[0] : false;
+
+    $db = new DB();
+                    
+    $uid = $_GET['uid'];
+
+?>
+
+
 <div class="profile">
     <div class="container-md">
         <div class="identity border-bottom">
             <?php include "components/edit-profile.php"; ?>
         </div>
         <div class="content mt-4">
-            <div class="row" data-masonry='{"percentPosition": true }'>
+            <div class="row list-card" data-masonry='{"percentPosition": true }'>
                 <?php
-                    include_once 'utilities/cookiesData.php';
 
-                    $cookiesData = getCookies();
-                    $auth = (boolean)$cookiesData[0];
-
-                    $db = new DB();
-                    
-                    $uid = $_GET['uid'];
 
                     $from = <<<SQL
                             Post.id_post,
@@ -31,6 +37,7 @@
                         ON Post.id_users = Users.id_users
                         WHERE Post.id_users = $uid
                         ORDER BY Post.created_time DESC
+                        LIMIT 10
                     SQL;
                     
                     $db->select('Post',$from,$Join);
@@ -41,10 +48,10 @@
                     }else{
                         $i=0;
                         while($row = $res->fetch_assoc()){
-                            echo <<<STR
+                            $header = <<<STR
                                 <div class="col-lg-4 col-xl-3 col-12 col-md-6 my-2 mb-3">
                                     <div class="card">
-                            STR;
+STR;
 
                             $img = base64_encode($row['img_post']);
 
@@ -52,7 +59,7 @@
                                 $titleModal = $row['title'];
                                 $idModal = $row['id_post'];
 
-                                echo <<<STR
+                                $header .= <<<STR
                                     <div class="image-option">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-detail" data-bs-toggle="dropdown" aria-expanded="false">
@@ -81,27 +88,35 @@
                                             </div>
                                         </div>
                                     </div>
-                                STR;
+STR;
                             }
 
-                            echo <<<STR
-                                        <a href="/copixel?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
+                            $header .= <<<STR
+                                        <a href="/?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
                                             <div class="image-overlay">
                                     
                                                 <div class="mx-3">
                                                     <p>{$row['title']}</p>
                                                 </div>
                                             </div>
-                                            <img class="image-card" loading=”lazy” src="data:image/webp;base64,$img" alt="">
+                                            <img loading="lazy" class="image-card" loading=”lazy” src="data:image/webp;base64,$img" alt="">
                                         </a>
                                     </div>
                                 </div>
-                            STR;
+STR;
+
+                            echo $header;
 
                             $i+=1;
                         }
                     }
                 ?>
+            </div>
+            <div class="auth-overlay">
+                <div class="auth-overlay__message">
+                    <h1>Daftar untuk bisa melihat lebih banyak unggahan</h1>
+                    <a href="?p=auth&s=register" class="btn btn-primary">Daftar</a>
+                </div>
             </div>
         </div>
     </div>

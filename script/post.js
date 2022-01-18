@@ -112,7 +112,7 @@ function Post(values, status){
     const upload = (fileURL) => {
         let imgTag = `
         <div class="image-wrapper-ue">
-            <img src="${fileURL}" class="image-wrapper-ue__img" alt="image">
+            <img loading="lazy" src="${fileURL}" class="image-wrapper-ue__img" alt="image">
             <div class="image-wrapper-ue__overlay">
                 <div class="information-wrapper">
                     <i class="fas fa-image"></i>
@@ -127,7 +127,7 @@ function Post(values, status){
 
     const showImage = async () => {
         let fileType = file.type
-        let validExtensions = ["image/jpeg", "image/jpg", "image/png"]
+        let validExtensions = ["image/jpeg", "image/jpg", "image/png", "image/webp"]
 
         if(validExtensions.includes(fileType)){
             if(file.size/(1024**2) < 5){

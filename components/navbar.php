@@ -9,7 +9,7 @@
     $res = $db->sql;
     $resVal = $res->fetch_assoc();
 
-    $img = base64_encode($resVal['img_profile']);
+    $img = isset($resVal) ? base64_encode($resVal['img_profile']) : '';
 
 ?>
 
@@ -39,7 +39,7 @@
             echo <<<STR
                 <a href="?p=upload" class="btn btn-primary px-3 py-2 btn-upload">Unggah</a>
                 <div class="dropdown">
-                    <img class="image-profile" loading="lazy" src="data:image/webp;base64,$img"
+                    <img loading="lazy" class="image-profile" loading="lazy" src="data:image/webp;base64,$img"
                         height="50" width="50" alt="profile" id="dropdownProfile" data-bs-toggle="dropdown"
                         aria-expanded="false">
         

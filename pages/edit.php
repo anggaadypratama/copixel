@@ -40,7 +40,7 @@
                     <div class="drag-area">
                         <label for="input-image-edit" class="input-area" id="input-edit-area">
                             <div class="image-wrapper-ue">
-                                <img src='<?= "data:image/webp;base64,$imgPost" ?>' class="image-wrapper-ue__img"
+                                <img loading="lazy" src='<?= "data:image/webp;base64,$imgPost" ?>' class="image-wrapper-ue__img"
                                     id="display-image" alt="image">
                                 <div class="image-wrapper-ue__overlay" id="img-edit-overlay">
                                     <div class="information-wrapper">

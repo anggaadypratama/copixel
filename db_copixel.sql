@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 4.9.5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:8889
--- Generation Time: Dec 30, 2021 at 02:25 PM
--- Server version: 5.7.34
--- PHP Version: 7.4.21
+-- Host: localhost:3306
+-- Generation Time: Jan 16, 2022 at 08:43 PM
+-- Server version: 10.5.12-MariaDB
+-- PHP Version: 7.3.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_copixel`
+-- Database: `id18153197_copixel`
 --
 
 -- --------------------------------------------------------
@@ -30,7 +31,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `Comment` (
   `id_comment` int(11) NOT NULL,
   `body` varchar(256) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `id_post` int(11) NOT NULL,
   `id_users` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -44,9 +45,9 @@ CREATE TABLE `Comment` (
 CREATE TABLE `Post` (
   `id_post` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
-  `img_post` longtext NOT NULL,
-  `description` longtext,
-  `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `img_post` mediumblob NOT NULL,
+  `description` longtext DEFAULT NULL,
+  `created_time` timestamp NOT NULL DEFAULT current_timestamp(),
   `id_users` int(11) NOT NULL,
   `views` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -63,7 +64,7 @@ CREATE TABLE `Users` (
   `email` varchar(50) NOT NULL,
   `password` longtext NOT NULL,
   `about` varchar(50) DEFAULT NULL,
-  `img_profile` longtext
+  `img_profile` mediumblob DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

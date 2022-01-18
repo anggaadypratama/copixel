@@ -2,7 +2,7 @@
         include_once 'utilities/cookiesData.php';
 
         $cookiesData = getCookies();
-        $auth = (boolean)$cookiesData[0];
+        $auth = isset($cookiesData) ? (boolean)$cookiesData[0] : false;
 
         $pid = $_GET['pid'];
 
@@ -13,20 +13,19 @@
                 Users.id_users,
                 Users.name,
                 Users.img_profile
-        SQL;
+SQL;
 
         $commentJoin = <<<SQL
             INNER JOIN Users ON Comment.id_users = Users.id_users 
             WHERE Comment.id_post = $pid
             ORDER BY Comment.timestamp DESC
-        SQL;
+SQL;
 
         $db->select('Comment',$commentFrom, $commentJoin);
         $res = $db->sql;
-?>
-
-
-<div class="list-comment <?= $auth ? 'mt-4' : ''  ?>">
+        
+        if($auth){ ?>
+            <div class="list-comment <?= $auth ? 'mt-4' : ''  ?>">
     <?php 
     $i = 0;
     while($row = $res->fetch_assoc()){
@@ -39,12 +38,12 @@
 
         echo <<<STR
             <div class="comment-section">
-                <img class="comment-section__img" src="data:image/webp;base64,$imgProfile" loading="lazy" alt="{$row['name']}">
+                <img loading="lazy" class="comment-section__img" src="data:image/webp;base64,$imgProfile" loading="lazy" alt="{$row['name']}">
                 <div class="comment-section__body">
                     <div class="comment-header">
                         <a href="?p=profile&uid={$row['id_users']}">{$row['name']}</a>
 
-        STR;
+STR;
 
         echo ($row['id_users'] === $cookiesData[1]) ? 
             <<<STR
@@ -77,7 +76,7 @@
                         </div>
                     </div>
                 </div>
-            STR
+STR
             : "";
 
             
@@ -88,9 +87,18 @@
                     <p class="comment-date">{$date}</p>
                 </div>
             </div>
-        STR;
+STR;
 
         $i++;
     } ?>
 
 </div>
+            
+        <?php } else { ?>
+            <p> Silahkan Login atau Register untuk melihat Komentar</p>
+            
+        <?php }
+?>
+
+
+

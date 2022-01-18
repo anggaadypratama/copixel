@@ -15,10 +15,14 @@
 
             $db->select('Users','*',"WHERE id_users='$data[1]'");
             $res = $db->sql;
+        
 
             if($res->num_rows === 0){
-                setcookie('tokenSession','',time() - 3600,'/');
-                header('location: /copixel');
+                //             var_dump($res->num_rows == 0);
+                // setcookie('token','',time() - 3600,'/');
+                echo "<script type=\"text/javascript\">
+                    window.location.replace('/process/logout.php')  
+                </script>";
             }else{
                 return $data;
             }

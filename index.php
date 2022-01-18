@@ -11,7 +11,7 @@
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css' rel='stylesheet'
         type='text/css'>
 
-    <link href="./style/style.css?v=<?= time(); ?>" rel="stylesheet" type="text/css" media="screen" />
+    <link href="./style/style.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 
 <body>
@@ -30,33 +30,36 @@
                 if($p !== "auth") include "components/navbar.php";
 
                 include($pages_dir.'/'.$p.'.php');
-                if($p !== "auth") include "components/footer.php";
+                // if($p !== "auth") include "components/footer.php";
+                if($p !== "auth") echo '<div class="mt-5">a</div>';
             }else{
                 echo'Halaman Tidak Ditemukan';
             }
         }else{
             include "components/navbar.php";
             include($pages_dir.'/home.php');
-            include "components/footer.php";
+            // include "components/footer.php";
+            echo '<div class="mt-4">a</div>';
         }
     ?>
 
+
+
     <!-- <div id="overlay"></div> -->
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 
     <script type="module" src="./script/post.js"></script>
     <!-- <script src="./script/upload.js"></script>
     <script src="./script/uploadEdit.js"></script> -->
     <script type="module" src="./script/profile.js"></script>
     <script src="./script/comment.js"></script>
+    <script src="./script/pagination.js"></script>
     <script type="module" src="./script/validation.js"></script>
     <script src="./script/index.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js"
-        integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous"
-        async></script>
 </body>
 
 </html>
