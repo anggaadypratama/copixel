@@ -41,7 +41,7 @@ SQL;
         echo <<<STR
         <div class="col-lg-4 col-xl-3 col-12 col-md-6 my-2 mb-4">
             <div class="card">
-                <a href="/?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
+                <a href="/copixel?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
                     <div class="image-overlay">
                         <div class="mx-3">
                             <p>{$row['title']}</p>
@@ -50,7 +50,7 @@ SQL;
                     <img loading="lazy" class="image-card" loading=”lazy” src="data:image/webp;base64,$imgPost" alt="">
                 </a>
                 <div class="post-info mt-3">
-                    <a href="/?p=profile&uid={$row['id_users']}" class="account">
+                    <a href="/copixel?p=profile&uid={$row['id_users']}" class="account">
                         <img loading="lazy"
                             loading=”lazy”
                             src="data:image/webp;base64,$imgProfile" 

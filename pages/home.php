@@ -94,7 +94,7 @@ STR;
                                         <img loading="lazy" class="image-card" loading=”lazy” src="data:image/webp;base64,$imgPost" alt="">
                                     </a>
                                     <div class="post-info mt-3">
-                                        <a href="/?p=profile&uid={$row['id_users']}" class="account">
+                                        <a href="/copixel?p=profile&uid={$row['id_users']}" class="account">
                                             <img loading="lazy"
                                                 loading=”lazy”
                                                 src="data:image/webp;base64,$imgProfile" 
@@ -119,12 +119,16 @@ STR;
                     ?>
 
             </div>
-            <div class="auth-overlay">
-                <div class="auth-overlay__message">
-                    <h1>Daftar untuk bisa melihat lebih banyak unggahan</h1>
-                    <a href="?p=auth&s=register" class="btn btn-primary">Daftar</a>
-                </div>
+            <<<<<<< HEAD=======<div class="d-flex justify-content-center">
+                <div class="loader"></div>
+        </div>
+        >>>>>>> d6ca2fe78b1cf79ac90a89cdd30fe057e5ebd099
+        <div class="auth-overlay">
+            <div class="auth-overlay__message">
+                <h1>Daftar untuk bisa melihat lebih banyak unggahan</h1>
+                <a href="?p=auth&s=register" class="btn btn-primary">Daftar</a>
             </div>
         </div>
     </div>
+</div>
 </div>

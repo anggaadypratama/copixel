@@ -59,7 +59,7 @@ SQL;
                     <p><?= $postVal['description'] ?></p>
                 </div>
                 <div class="content__bottom border-bottom mt-4 mb-4">
-                    <a href="/?p=profile&uid=<?= $postVal['id_users']?>" class="profile">
+                    <a href="/copixel?p=profile&uid=<?= $postVal['id_users']?>" class="profile">
                         <img loading="lazy" class="profile__image" src='<?=  "data:image/webp;base64,$imgProfile" ?>'
                             alt="image-profile">
                         <span class="profile__name">
