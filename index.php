@@ -31,7 +31,7 @@
 
                 include($pages_dir.'/'.$p.'.php');
                 // if($p !== "auth") include "components/footer.php";
-                if($p !== "auth") echo '<div class="mt-5">a</div>';
+                if($p !== "auth") echo '<div class="mt-5"></div>';
             }else{
                 echo'Halaman Tidak Ditemukan';
             }
@@ -39,7 +39,7 @@
             include "components/navbar.php";
             include($pages_dir.'/home.php');
             // include "components/footer.php";
-            echo '<div class="mt-4">a</div>';
+            echo '<div class="mt-4"></div>';
         }
     ?>
 

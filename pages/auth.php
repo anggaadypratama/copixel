@@ -6,15 +6,15 @@
 
     if(isset($_COOKIE['token']) && $auth) {
                 echo "<script type=\"text/javascript\">
-        window.location.replace('/')
+        window.location.replace('/copixel')
         </script>";
         
     }
 
     $pages = !empty($_GET['s']) ?
                         ($_GET['s'] === 'login' || $_GET['s'] === 'register') ?
-                            $_GET['s'] : header('location:/?p=error') :
-                    header('location: /?p=auth&s=login');
+                            $_GET['s'] : header('location:/copixel?p=error') :
+                    header('location: /copixel?p=auth&s=login');
 ?>
 
 <div class="row">
@@ -24,7 +24,8 @@
                 <h1 class="welcome-title">Welcome <?= ($pages == 'login') ? 'Back' : '' ?></h1>
                 <p class="welcome-desc">To keep connected with us
                     <?= ($pages == 'login') ? 'please login' : 'you can register' ?> with your personal info</p>
-                <a class="btn btn-light mt-4 py-3" href="/?p=auth&s=<?= ($pages == 'login') ? 'register' : 'login'?>">
+                <a class="btn btn-light mt-4 py-3"
+                    href="/copixel?p=auth&s=<?= ($pages == 'login') ? 'register' : 'login'?>">
                     <?= ($pages == 'login') ? 'Register' : 'Login' ?>
                 </a>
             </div>
@@ -88,7 +89,7 @@
                             <input value="<?= ($pages == 'login') ? 'Login' : 'Register' ?>" name="submit" type="submit"
                                 class="btn btn-primary px-5 py-3 mt-3">
                             <a class="redirect-auth btn"
-                                href="/?p=auth&s=<?= ($pages == 'login') ? 'register' : 'login'?>">
+                                href="/copixel?p=auth&s=<?= ($pages == 'login') ? 'register' : 'login'?>">
                                 <?= ($pages == 'login') ? 'Register' : 'Login' ?>
                             </a>
                         </div>

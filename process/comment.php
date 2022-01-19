@@ -16,6 +16,6 @@
         ]);
     
         if($res === true){
-            header("location: ../?p=detail-post&pid=$pid");
+            header("location: ../copixel?p=detail-post&pid=$pid");
         }
     }

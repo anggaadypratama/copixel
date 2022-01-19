@@ -6,7 +6,7 @@
 
     if(!isset($_COOKIE['token']) || !$auth) {
         echo "<script type=\"text/javascript\">
-        window.location.replace('/')
+        window.location.replace('/copixel')
         </script>";
     }
 ?>

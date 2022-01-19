@@ -53,6 +53,8 @@
                                     <div class="card">
 STR;
 
+
+
                             $img = base64_encode($row['img_post']);
 
                             if($auth && $uid === $cookiesData[1]){
@@ -106,9 +108,7 @@ STR;
 STR;
 
                             echo $header;
-
-                            echo $header;
-
+                            
                             $i+=1;
                         }
                     }

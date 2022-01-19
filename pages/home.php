@@ -85,7 +85,7 @@ STR;
                             echo <<<STR
                             <div class="col-lg-4 col-xl-3 col-12 col-md-6 my-2 mb-4">
                                 <div class="card">
-                                    <a href="/?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
+                                    <a href="/copixel?p=detail-post&pid={$row['id_post']}" class="image-wrapper">
                                         <div class="image-overlay">
                                             <div class="mx-3">
                                                 <p>{$row['title']}</p>
@@ -119,16 +119,16 @@ STR;
                     ?>
 
             </div>
-            <<<<<<< HEAD=======<div class="d-flex justify-content-center">
+            <div class="d-flex justify-content-center">
                 <div class="loader"></div>
-        </div>
-        >>>>>>> d6ca2fe78b1cf79ac90a89cdd30fe057e5ebd099
-        <div class="auth-overlay">
-            <div class="auth-overlay__message">
-                <h1>Daftar untuk bisa melihat lebih banyak unggahan</h1>
-                <a href="?p=auth&s=register" class="btn btn-primary">Daftar</a>
+            </div>
+
+            <div class="auth-overlay">
+                <div class="auth-overlay__message">
+                    <h1>Daftar untuk bisa melihat lebih banyak unggahan</h1>
+                    <a href="?p=auth&s=register" class="btn btn-primary">Daftar</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 </div>
